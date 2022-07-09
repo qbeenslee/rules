@@ -1,0 +1,27 @@
+[URL Rewrite]
+
+# TikTok By wzw1997007 & Choler
+(?<=_region=)CN(?=&) JP 307
+(?<=&app_version=)1[6-9]..(?=.?.?&) 17.. 307
+(?<=\?version_code=)1[6-9]..(?=.?.?&) 17.. 307
+(.*video_id=\w{32})(.*watermark=)(.*) $1 302
+
+
+[Rule]
+# > TikTok
+USER-AGENT,TikTok*
+DOMAIN-SUFFIX,byteoversea.com
+DOMAIN-SUFFIX,ibytedtos.com
+DOMAIN-SUFFIX,ipstatp.com
+DOMAIN-SUFFIX,muscdn.com
+DOMAIN-SUFFIX,musical.ly
+DOMAIN-SUFFIX,tiktok.com
+DOMAIN-SUFFIX,tik-tokapi.com
+DOMAIN-SUFFIX,tiktokcdn.com
+DOMAIN-SUFFIX,tiktokv.com
+DOMAIN-KEYWORD,-tiktokcdn-com
+
+
+
+#[MITM]
+#hostname = *.tiktokv.com, *.byteoversea.com, *.musical.ly, *.snssdk.com

@@ -1,0 +1,79 @@
+[Script]
+
+#------------------------------------- Cookie -------------------------------------
+# > 京东
+# 浏览器登录 https://bean.m.jd.com 点击签到并且出现签到日历
+http-request https:\/\/api\.m\.jd\.com\/client\.action.*functionId=signBean(Index|GroupStageIndex) max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js
+http-request ^https:\/\/ms\.jr\.jd\.com\/gw\/generic\/bt\/h5\/m\/queryUserSignFlow script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jdczfcookie.js,tag=京东成长分 (By @barrymchen)
+http-request https:\/\/daojia\.jd\.com\/client\?_jdrandom=\d{13}&functionId=%2Fsignin script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/jddj.js, tag=京东到家 (By @barrymchen, @GideonSenku & @Macsuny)
+http-request https:\/\/draw\.jdfcloud\.com\/\/api\/bean\/square\/silverBean\/task\/get\? script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/lkyl.js,enabled=true,tag=微信小程序 来客有礼
+^http-request https:\/\/apapia-history\.manmanbuy\.com\/ChromeWidgetServices\/WidgetServices\.ashx script-path=https://raw.githubusercontent.com/toulanboy/scripts/master/jd_price_detect/jd_price_detect.js,requires-body=true, tag=京东价格提醒cookie获取
+http-request ^https:\/\/ms\.jr\.jd\.com\/gw\/generic\/base\/h5\/m\/recommendGetWay script-path=https://raw.githubusercontent.com/barrym-chen/Script/master/tie/tie_cookie.js, tag=京东金额提额
+http-request ^https:\/\/jdread-api\.jd\.com\/* script-path=https://raw.githubusercontent.com/XidNDD/2020scripts/master/jddsSign.js, requires-body=true, timeout=10, tag=京东读书签到
+# http-request ^https:\/\/operation-api\.jimistore\.com\/* script-path=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/ttwk/ttwk.js, requires-body=true, timeout=10, tag=天天挖矿(operation-api.jimistore.com)
+
+#------------------------------------- Tasks -------------------------------------
+
+# By lxk0301   GitHub：https://github.com/lxk0301/scripts
+
+cron "0 9 * * *" script-path=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_baiTiao.js, tag=京东白条
+# By hundun
+http-request ^https\:\/\/api\.m\.jd\.com\/client\.action\?functionId\=interactIndex script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jdzz.cookie.js, requires-body=false, timeout=10, tag=京东赚赚cookie
+cron "0 9 * * *" script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jdzz.js, tag=京东赚赚
+cron "2 */3 * * *" script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/dd_factory.js, tag=东东工厂
+
+
+
+
+# By NobyDa    GitHub：https://github.com/NobyDa/Script/tree/master
+cron "15 0 * * *" ,timeout=30, script-path=https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js,timeout=30, tag=东东
+
+# By chavyleung      GitHub：https://github.com/chavyleung/scripts
+cron "5 0 * * *" script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/jd/JD_BaiTiao.js, tag=京东白条
+
+# Sunert https://github.com/Sunert/Scripts/tree/master/Task
+#cron "30 10 8 * * *" script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/jddj.js, tag=京东到家
+cron "40 10 8 * * *" script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/lkyl.js, tag=来客有礼
+cron "7 0 * * *" script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/jingxi.js, tag=京喜
+
+
+# barrym-chen   https://github.com/barrym-chen/Script
+#cron "0 10 8 * * *" script-path=https://raw.githubusercontent.com/barrym-chen/Script/master/jdczf/jdczf.js, tag= 京东成长分
+#cron "10 10 8 * * *" script-path=https://raw.githubusercontent.com/barrym-chen/Script/master/jddj/jddj.js, tag=京东到家
+cron "10 10 8 * * *" script-path=https://raw.githubusercontent.com/barrym-chen/Script/master/tie/tie_sign.js, tag=京东金融提额
+
+# iisams
+cron "5 8 * * *" script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/jdtqz.js, tag= 京东特权值
+
+# yangtingxiao
+# cron "5 9-22 * * *" script-path=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_bigWinner.js, tag=京东大赢家, enabled=false
+# cron "10 1 * * *" script-path=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/ttwk/ttwk.js, tag=天天挖矿, enabled=false
+cron "20 0-20/4 * * *" script-path=https://raw.githubusercontent.com/qbeenslee/i-Rule/master/loon/scripts/jd_timeMachine.js, tag=京东时光机
+
+# whyour
+# cron "10 * * * *" script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_story.js, tag=京喜金牌厂长
+
+cron "30 23 * * *" script-path=https://raw.githubusercontent.com/MoPoQAQ/Script/main/Me/jx_cfd.js,tag=京喜财富岛
+
+
+
+
+
+
+
+
+#------------------------------------- Scripts -------------------------------------
+
+
+# > yichahucha
+http-response ^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/jd_price.js,tag=京东比价
+
+
+# 聚宝盆投狗粮辅助
+http-response ^https:\/\/jdjoy\.jd\.com\/pet\/getPetTreasureBox|^https:\/\/draw\.jdfcloud\.com\/\/pet\/getPetTreasureBox script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_petTreasureBox.js, requires-body=true, timeout=10, tag=聚宝盆投狗粮辅助
+
+# > 京东APP商品显示历史价格（20200904） 公众号墨鱼手记
+http-response ^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Script/jd_price.js,tag=京东历史价格
+
+[MITM]
+hostname = api.m.jd.com, jdread-api.jd.com,draw.jdfcloud.com,daojia.jd.com,ms.jr.jd.com,jdjoy.jd.com,operation-api.jimistore.com
