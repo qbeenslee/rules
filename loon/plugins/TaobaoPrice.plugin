@@ -1,0 +1,3 @@
+[Script]
+http-request https:\/\/h5api.m.taobao.com\/h5\/mtop.taobao.detail.getdesc tag=淘宝监控获取Cookie, script-path=https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/taobao/tb.js, requires-body=false
+cron "5 0 * * *" script-path=https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/hzh/taobao/tb.js, tag=淘宝监控
