@@ -153,6 +153,8 @@ DOMAIN-SUFFIX,tencent.com
 DOMAIN-SUFFIX,tencent-cloud.net
 DOMAIN-SUFFIX,tenpay.com
 DOMAIN,file-igamecj.akamaized.net
+# 微信表情包问题
+IP-CIDR,182.254.116.0/24
 # > YYeTs
 USER-AGENT,YYeTs*
 DOMAIN-SUFFIX,jstucdn.com
