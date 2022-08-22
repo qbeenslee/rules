@@ -106,6 +106,7 @@ DOMAIN-SUFFIX,azurewebsites.net
 DOMAIN-SUFFIX,badoo.com
 DOMAIN-SUFFIX,bandisoft.com
 DOMAIN-SUFFIX,bbtoystore.com
+DOMAIN-SUFFIX,bet365.com
 DOMAIN-SUFFIX,betvictor.com
 DOMAIN-SUFFIX,bigsound.org
 DOMAIN-SUFFIX,bing.com
@@ -159,6 +160,7 @@ DOMAIN-SUFFIX,cnn.com
 DOMAIN-SUFFIX,cocoapods.org
 DOMAIN-SUFFIX,comodoca.com
 DOMAIN-SUFFIX,content.office.net
+DOMAIN-SUFFIX,crisp.chat
 DOMAIN-SUFFIX,culturedcode.com
 DOMAIN-SUFFIX,cygames.jp
 DOMAIN-SUFFIX,d.pr
@@ -231,6 +233,7 @@ DOMAIN-SUFFIX,gfw.press
 DOMAIN-SUFFIX,gfx.ms
 DOMAIN-SUFFIX,ggpht.com
 DOMAIN-SUFFIX,ghostnoteapp.com
+DOMAIN-SUFFIX,ghcr.io
 DOMAIN-SUFFIX,git.io
 DOMAIN-SUFFIX,gitbook.com
 DOMAIN-SUFFIX,globalsign.com
@@ -266,6 +269,7 @@ DOMAIN-SUFFIX,imageshack.us
 DOMAIN-SUFFIX,img.ly
 DOMAIN-SUFFIX,imgur.com
 DOMAIN-SUFFIX,imore.com
+DOMAIN-SUFFIX,imtoken.fans
 DOMAIN-SUFFIX,ingress.com
 DOMAIN-SUFFIX,inoreader.com
 DOMAIN-SUFFIX,insder.co
@@ -324,6 +328,7 @@ DOMAIN-SUFFIX,mega.nz
 DOMAIN-SUFFIX,megaupload.com
 DOMAIN-SUFFIX,microsofttranslator.com
 DOMAIN-SUFFIX,mindnode.com
+DOMAIN-SUFFIX,mixin.one
 DOMAIN-SUFFIX,mlssoccer.com
 DOMAIN-SUFFIX,mobile01.com
 DOMAIN-SUFFIX,modmyi.com
@@ -354,6 +359,7 @@ DOMAIN-SUFFIX,nytimes.com
 DOMAIN-SUFFIX,nytimg.com
 DOMAIN-SUFFIX,nytstyle.com
 DOMAIN-SUFFIX,office365.com
+DOMAIN-SUFFIX,okx.com
 DOMAIN-SUFFIX,omnigroup.com
 DOMAIN-SUFFIX,onenote.com
 DOMAIN-SUFFIX,ooyala.com
@@ -470,6 +476,7 @@ DOMAIN-SUFFIX,talkboxapp.com
 DOMAIN-SUFFIX,talkonly.net
 DOMAIN-SUFFIX,tapbots.com
 DOMAIN-SUFFIX,tapbots.net
+DOMAIN-SUFFIX,teamviewer.com
 DOMAIN-SUFFIX,techcrunch.com
 DOMAIN-SUFFIX,technorati.com
 DOMAIN-SUFFIX,techsmith.com
@@ -676,6 +683,7 @@ DOMAIN-SUFFIX,gmail.com
 DOMAIN-SUFFIX,google.com
 DOMAIN-SUFFIX,gosetsuden.jp
 DOMAIN-SUFFIX,gwtproject.org
+DOMAIN-SUFFIX,hackmd.io
 DOMAIN-SUFFIX,heroku.com
 DOMAIN-SUFFIX,html5rocks.com
 DOMAIN-SUFFIX,keyhole.com
@@ -704,6 +712,10 @@ DOMAIN-SUFFIX,webrtc.org
 DOMAIN-SUFFIX,v2ex.com
 
 DOMAIN-KEYWORD,dlercloud
+
+# > exception
+DOMAIN-SUFFIX,wheel-size.cn
+DOMAIN-SUFFIX,chalungu.cn
 
 # > Amazon
 IP-CIDR,13.32.0.0/16,no-resolve
