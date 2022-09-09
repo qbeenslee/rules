@@ -1,5 +1,5 @@
 # DIY rules
-
+DOMAIN-SUFFIX,qbeenslee.com
 
 # 核心域名代理原则
 DOMAIN-KEYWORD,.me
