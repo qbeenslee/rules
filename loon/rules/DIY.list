@@ -8,7 +8,11 @@ DOMAIN-KEYWORD,.cc
 DOMAIN-KEYWORD,com.au
 DOMAIN-KEYWORD,.xyz
 DOMAIN-SUFFIX,eu
+DOMAIN-SUFFIX,org
 DOMAIN-KEYWORD,porn
+DOMAIN-SUFFIX,online
+DOMAIN-SUFFIX,top
+DOMAIN-SUFFIX,ga
 
 
 DOMAIN-SUFFIX,mypikpak.com
@@ -26,6 +30,19 @@ DOMAIN-SUFFIX,nsl-net.cc
 DOMAIN-SUFFIX,lvv2.com
 DOMAIN-SUFFIX,xvideos-cdn.com
 DOMAIN-SUFFIX,zxcs.me
+
+
+DOMAIN-SUFFIX,anti-ad.net
+DOMAIN-SUFFIX,adguard.com
+DOMAIN-SUFFIX,adtidy.org
+
+DOMAIN-SUFFIX,jsdelivr.net
+DOMAIN-SUFFIX,xhamster.com
+
+
+
+# DIY Proxy
+DOMAIN-KEYWORD,nbcnews.com
 
 
 

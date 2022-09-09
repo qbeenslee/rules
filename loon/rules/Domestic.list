@@ -3,7 +3,10 @@ DOMAIN-SUFFIX,workingcopyapp.com
 DOMAIN-SUFFIX,com.cn
 DOMAIN-SUFFIX,anjuke.com
 DOMAIN-SUFFIX,alookbrowser.com
-
+URL-REGEX,(Subject|HELO|SMTP)
+DOMAIN-SUFFIX,smtp
+DOMAIN-SUFFIX,alidns.com
+DOMAIN-SUFFIX,ele.me
 
 # > Beplay
 DOMAIN-KEYWORD,beplay
