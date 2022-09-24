@@ -1,0 +1,9 @@
+# https://raw.githubusercontent.com/lhie1/Rules/master/Surge/Surge%203/Provider/Media/iQiyi.list
+# > iQiyi
+USER-AGENT,QIYI*
+USER-AGENT,iQiYi*
+DOMAIN-KEYWORD,qiyi
+DOMAIN-SUFFIX,qy.net
+IP-CIDR,101.227.0.0/16,no-resolve
+IP-CIDR,101.224.0.0/13,no-resolve
+IP-CIDR,119.176.0.0/12,no-resolve
