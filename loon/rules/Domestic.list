@@ -10,7 +10,7 @@ DOMAIN,officecdn-microsoft-com.akamaized.net
 DOMAIN,speedtest.macpaw.com
 DOMAIN-SUFFIX,wechat.com
 DOMAIN-KEYWORD,wechat
-DOMAIN,43.156.222.165
+IP-CIDR,43.156.222.0/24,no-resolve
 DOMAIN-KEYWORD,beplay
 DOMAIN-SUFFIX,12306.cn
 DOMAIN-SUFFIX,12306.com
