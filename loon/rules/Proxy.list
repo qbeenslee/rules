@@ -69,7 +69,8 @@ DOMAIN-KEYWORD,twitter
 DOMAIN-KEYWORD,uk-live
 DOMAIN-KEYWORD,voddazn
 DOMAIN-KEYWORD,whatsapp
-DOMAIN-SUFFIX, media-amazon.com
+DOMAIN-SUFFIX,gitlab.com
+DOMAIN-SUFFIX,media-amazon.com
 DOMAIN-SUFFIX,1e100.net
 DOMAIN-SUFFIX,2mdn.net
 DOMAIN-SUFFIX,2o7.net
