@@ -1,3 +1,115 @@
+# NAME: WeChat
+# AUTHOR: blackmatrix7
+# REPO: https://github.com/blackmatrix7/ios_rule_script
+# UPDATED: 2023-02-15 23:46:47
+# DOMAIN-KEYWORD: 1
+# DOMAIN-SUFFIX: 12
+# IP-CIDR: 10
+# USER-AGENT: 2
+# TOTAL: 25
+DOMAIN-SUFFIX,qlogo.cn
+DOMAIN-SUFFIX,qpic.cn
+DOMAIN-SUFFIX,servicewechat.com
+DOMAIN-SUFFIX,tenpay.com
+DOMAIN-SUFFIX,wechat.com
+DOMAIN-SUFFIX,wechatlegal.net
+DOMAIN-SUFFIX,wechatpay.com
+DOMAIN-SUFFIX,weixin.com
+DOMAIN-SUFFIX,weixin.qq.com
+DOMAIN-SUFFIX,weixinbridge.com
+DOMAIN-SUFFIX,weixinsxy.com
+DOMAIN-SUFFIX,wxapp.tc.qq.com
+DOMAIN-KEYWORD,43.156.222.
+USER-AGENT,MicroMessenger*
+USER-AGENT,WeChat*
+IP-CIDR,101.32.104.4/32,no-resolve
+IP-CIDR,101.32.104.41/32,no-resolve
+IP-CIDR,101.32.104.56/32,no-resolve
+IP-CIDR,101.32.118.25/32,no-resolve
+IP-CIDR,101.32.133.16/32,no-resolve
+IP-CIDR,101.32.133.209/32,no-resolve
+IP-CIDR,101.32.133.53/32,no-resolve
+IP-CIDR,129.226.107.244/32,no-resolve
+IP-CIDR,129.226.3.47/32,no-resolve
+IP-CIDR,162.62.163.63/32,no-resolve
+
+
+# NAME: NetEaseMusic
+# AUTHOR: blackmatrix7
+# REPO: https://github.com/blackmatrix7/ios_rule_script
+# UPDATED: 2023-02-15 23:45:55
+# DOMAIN: 2
+# DOMAIN-SUFFIX: 8
+# IP-CIDR: 19
+# USER-AGENT: 7
+# TOTAL: 36
+DOMAIN,iadmat.nosdn.127.net
+DOMAIN,netease.ugcvideoss.ourdvs.com
+DOMAIN-SUFFIX,163yun.com
+DOMAIN-SUFFIX,api.iplay.163.com
+DOMAIN-SUFFIX,hz.netease.com
+DOMAIN-SUFFIX,mam.netease.com
+DOMAIN-SUFFIX,music.126.com
+DOMAIN-SUFFIX,music.126.net
+DOMAIN-SUFFIX,music.163.com
+DOMAIN-SUFFIX,music.163.com.163jiasu.com
+USER-AGENT,%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90
+USER-AGENT,%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90*
+USER-AGENT,%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90**
+USER-AGENT,NeteaseMusic*
+USER-AGENT,NeteaseMusic**
+USER-AGENT,网易云音乐*
+USER-AGENT,网易云音乐**
+IP-CIDR,101.71.154.241/32,no-resolve
+IP-CIDR,103.126.92.13/32,no-resolve
+IP-CIDR,103.126.92.132/31,no-resolve
+IP-CIDR,112.13.119.17/32,no-resolve
+IP-CIDR,112.13.119.18/32,no-resolve
+IP-CIDR,112.13.122.1/32,no-resolve
+IP-CIDR,112.13.122.4/32,no-resolve
+IP-CIDR,115.236.112.0/20,no-resolve
+IP-CIDR,118.24.63.156/32,no-resolve
+IP-CIDR,182.92.170.253/32,no-resolve
+IP-CIDR,193.112.159.225/32,no-resolve
+IP-CIDR,223.252.192.0/19,no-resolve
+IP-CIDR,39.105.175.128/32,no-resolve
+IP-CIDR,39.105.63.80/32,no-resolve
+IP-CIDR,45.254.48.1/32,no-resolve
+IP-CIDR,47.100.127.239/32,no-resolve
+IP-CIDR,59.111.128.0/17,no-resolve
+IP-CIDR,59.111.19.33/32,no-resolve
+IP-CIDR,59.111.21.14/31,no-resolve
+
+
+# NAME: AliPay
+# AUTHOR: blackmatrix7
+# REPO: https://github.com/blackmatrix7/ios_rule_script
+# UPDATED: 2023-02-15 23:45:56
+# DOMAIN-SUFFIX: 21
+# TOTAL: 21
+DOMAIN-SUFFIX,alipay
+DOMAIN-SUFFIX,alipay-corp.com
+DOMAIN-SUFFIX,alipay-eco.com
+DOMAIN-SUFFIX,alipay-inc.com
+DOMAIN-SUFFIX,alipay-traffic.com
+DOMAIN-SUFFIX,alipay.cn
+DOMAIN-SUFFIX,alipay.com
+DOMAIN-SUFFIX,alipay.com.cn
+DOMAIN-SUFFIX,alipay.hk
+DOMAIN-SUFFIX,alipay.net
+DOMAIN-SUFFIX,alipaydesign.com
+DOMAIN-SUFFIX,alipaydev.com
+DOMAIN-SUFFIX,alipaydns.com
+DOMAIN-SUFFIX,alipayeshop.com
+DOMAIN-SUFFIX,alipaylog.com
+DOMAIN-SUFFIX,alipaymo.com
+DOMAIN-SUFFIX,alipayobjects.com
+DOMAIN-SUFFIX,alipayplus.com
+DOMAIN-SUFFIX,ifaa.org.cn
+DOMAIN-SUFFIX,luohanacademy.com
+DOMAIN-SUFFIX,sinopayment.com.cn
+
+
 DOMAIN,blzddist1-a.akamaihd.net
 DOMAIN,cdn.angruo.com
 DOMAIN,cdp.cloud.unity3d.com
@@ -8,8 +120,6 @@ DOMAIN,images-cn.ssl-images-amazon.com
 DOMAIN,ip.bjango.com
 DOMAIN,officecdn-microsoft-com.akamaized.net
 DOMAIN,speedtest.macpaw.com
-DOMAIN-SUFFIX,wechat.com
-DOMAIN-KEYWORD,wechat
 IP-CIDR,43.156.222.0/24,no-resolve
 DOMAIN-KEYWORD,beplay
 DOMAIN-SUFFIX,aliapp.org
@@ -19,6 +129,7 @@ DOMAIN-SUFFIX,126.net
 DOMAIN-SUFFIX,127.net
 DOMAIN-SUFFIX,163.com
 DOMAIN-SUFFIX,163yun.com
+DOMAIN-SUFFIX,189.cn
 DOMAIN-SUFFIX,21cn.com
 DOMAIN-SUFFIX,343480.com
 DOMAIN-SUFFIX,360.cn
@@ -53,6 +164,8 @@ DOMAIN-SUFFIX,alipay.com
 DOMAIN-SUFFIX,alipayobjects.com
 DOMAIN-SUFFIX,aliyun.com
 DOMAIN-SUFFIX,aliyuncs.com
+DOMAIN-SUFFIX,aliyundrive.net
+DOMAIN-KEYWORD,aliyun
 DOMAIN-SUFFIX,alookbrowser.com
 DOMAIN-SUFFIX,alphassl.com
 DOMAIN-SUFFIX,amap.com
@@ -140,6 +253,7 @@ DOMAIN-SUFFIX,dfcfw.com
 DOMAIN-SUFFIX,didialift.com
 DOMAIN-SUFFIX,didiglobal.com
 DOMAIN-SUFFIX,digicert.com
+DOMAIN-SUFFIX,digicert.cn
 DOMAIN-SUFFIX,dingtalk.com
 DOMAIN-SUFFIX,docschina.org
 DOMAIN-SUFFIX,douban.com
@@ -427,7 +541,6 @@ DOMAIN-SUFFIX,tawk.to
 DOMAIN-SUFFIX,teamviewer.com
 DOMAIN-SUFFIX,tencent-cloud.net
 DOMAIN-SUFFIX,tencent.com
-DOMAIN-SUFFIX,tenpay.com
 DOMAIN-SUFFIX,test-ipv6.com
 DOMAIN-SUFFIX,tianyancha.com
 DOMAIN-SUFFIX,tietuku.com
@@ -443,6 +556,7 @@ DOMAIN-SUFFIX,tudou.com
 DOMAIN-SUFFIX,udache.com
 DOMAIN-SUFFIX,udacity.com
 DOMAIN-SUFFIX,umengcloud.com
+DOMAIN-SUFFIX,umeng.com
 DOMAIN-SUFFIX,un.org
 DOMAIN-SUFFIX,uni-bielefeld.de
 DOMAIN-SUFFIX,uning.com
