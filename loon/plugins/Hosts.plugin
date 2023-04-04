@@ -5,9 +5,6 @@
 #!homepage = https://github.com/qbeenslee/rules/
 #!icon = https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/SSID.png
 
-
-
-
 [Host]
 *.unicorncloud.club = server:system
 engage.cloudflareclient.com = server:system
