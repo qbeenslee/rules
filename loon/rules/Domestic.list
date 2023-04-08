@@ -507,9 +507,11 @@ DOMAIN-SUFFIX,sinaapp.com
 DOMAIN-SUFFIX,sinaimg.cn
 DOMAIN-SUFFIX,sinaimg.com
 DOMAIN-SUFFIX,sm.ms
+DOMAIN-SUFFIX,sm.cn
 DOMAIN-SUFFIX,smtp
 DOMAIN-SUFFIX,smzdm.com
 DOMAIN-SUFFIX,snapdrop.net
+DOMAIN-SUFFIX,snssdk.com
 DOMAIN-SUFFIX,snwx.com
 DOMAIN-SUFFIX,so.com
 DOMAIN-SUFFIX,sogo.com
@@ -554,10 +556,15 @@ DOMAIN-SUFFIX,tmall.com
 DOMAIN-SUFFIX,tmall.hk
 DOMAIN-SUFFIX,tmzvps.com
 DOMAIN-SUFFIX,totheglory.im
+DOMAIN-SUFFIX,pangolin-sdk-toutiao-b.com
 DOMAIN-SUFFIX,trello.com
 DOMAIN-SUFFIX,trellocdn.com
 DOMAIN-SUFFIX,ttmeiju.com
 DOMAIN-SUFFIX,tudou.com
+DOMAIN-SUFFIX,uc.cn
+DOMAIN-SUFFIX,uc.cmd
+DOMAIN-SUFFIX,ucweb.com
+DOMAIN-SUFFIX,uczzd.cn
 DOMAIN-SUFFIX,udache.com
 DOMAIN-SUFFIX,udacity.com
 DOMAIN-SUFFIX,umengcloud.com
