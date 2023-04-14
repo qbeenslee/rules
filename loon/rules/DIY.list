@@ -45,4 +45,10 @@ DOMAIN-SUFFIX,xhamster.com
 DOMAIN-KEYWORD,nbcnews.com
 
 
+# IP leak
+DOMAIN-SUFFIX,ip138.com
+DOMAIN,pubstatic.b0.upaiyun.com
+DOMAIN-SUFFIX,cf-ns.com
+DOMAIN-SUFFIX,speedtest.cn
+
 
