@@ -8,3 +8,7 @@
 # > youtube
 
 DOMAIN-SUFFIX,googlevideo.com
+
+
+# > instagram
+DOMAIN-SUFFIX,cdninstagram.com
