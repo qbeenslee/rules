@@ -6,9 +6,12 @@
 
 
 # > youtube
-
 DOMAIN-SUFFIX,googlevideo.com
 
 
 # > instagram
 DOMAIN-SUFFIX,cdninstagram.com
+
+
+# > twitter>video
+DOMAIN,video.twimg.com
