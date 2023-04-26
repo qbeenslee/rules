@@ -1,0 +1,10 @@
+# 主要使用于加载大流量的接口，例如视频流
+#
+# ⚠️ 注意:
+# 要置于其他规则之前
+# 
+
+
+# > youtube
+
+DOMAIN-SUFFIX,googlevideo.com
