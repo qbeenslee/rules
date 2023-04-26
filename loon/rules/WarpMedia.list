@@ -20,4 +20,4 @@ DOMAIN,video.twimg.com
 DOMAIN,v.redd.it
 
 # > imgur cdn
-DOMAIN,i.imgur.com
+DOMAIN-SUFFIX,imgur.com
