@@ -21,3 +21,5 @@ DOMAIN,v.redd.it
 
 # > imgur cdn
 DOMAIN-SUFFIX,imgur.com
+DOMAIN-SUFFIX,redgifs.com
+DOMAIN-SUFFIX,redd.it
