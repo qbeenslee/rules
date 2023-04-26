@@ -14,7 +14,8 @@ DOMAIN-SUFFIX,youtubekids.com
 DOMAIN-SUFFIX,youtube-nocookie.com
 DOMAIN-SUFFIX,yt.be
 DOMAIN-SUFFIX,ytimg.com
-DOMAIN,youtubei.googleapis.com
+# 使用更快速的代理，加快打开速度
+# DOMAIN,youtubei.googleapis.com
 DOMAIN,yt3.ggpht.com
 
 
