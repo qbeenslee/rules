@@ -15,3 +15,6 @@ DOMAIN-SUFFIX,cdninstagram.com
 
 # > twitter>video
 DOMAIN,video.twimg.com
+
+# > reddit
+DOMAIN,v.redd.it
