@@ -1,4 +1,9 @@
 # DIY rules
+# 
+# ⚠️注意: 务必将该规则至于所有远程规则最后
+
+
+
 DOMAIN-SUFFIX,qbeenslee.com
 
 # 国外顶级核心域名
@@ -44,7 +49,7 @@ DOMAIN-SUFFIX,adtidy.org
 
 DOMAIN-SUFFIX,jsdelivr.net
 DOMAIN-SUFFIX,xhamster.com
-
+DOMAIN-SUFFIX,cupfox.app
 
 
 # DIY Proxy
