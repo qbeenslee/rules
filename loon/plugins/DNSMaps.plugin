@@ -1,3 +1,13 @@
+#!name = DNS Maps
+#!desc = 域名解析
+#!openUrl = 
+#!author = Qbeenslee
+#!homepage = https://github.com/qbeenslee/rules/
+#!icon = https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
+
+
+
+
 [Host]
 ## 米忽悠
 *.bh3.com = server:https://doh.pub/dns-query
