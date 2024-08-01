@@ -1,0 +1,32 @@
+[AdGuard]
+! Title: AdGuardHome拦截乐播投屏规则
+! Update Time: 2024-8-2 01:00:00
+! Ver.: 1.0.0
+! Update Details
+!! --------------------
+!! 更新误拦截及部分内容
+!! --------------------
+||www.lebo.cn^$important
+||hpplay.cdn.cibn.cc^$important
+||g.dtv.cn.miaozhen.com^$important
+||android.bugly.qq.com^$important
+||519332DA.rtc.youme.im^$important
+||alog.umeng.com^$important
+||h5.hpplay.com.cn^$important
+||cdn.hpplay.com.cn^$important
+||hotupgrade.hpplay.com.cn^$important
+||ad.hpplay.cn^$important
+||rp.hpplay.cn^$important
+||sl.hpplay.cn^$important
+||pin.hpplay.cn^$important
+||fix.hpplay.cn^$important
+||imdns.hpplay.cn^$important
+||image.hpplay.cn^$important
+||tvapp.hpplay.cn^$important
+||conf.hpplay.cn^$important
+||gslb.hpplay.cn^$important
+||adcdn.hpplay.cn^$important
+||adeng.hpplay.cn^$important
+||sdkauth.hpplay.cn^$important
+||vipauth.hpplay.cn^$important
+||hotupgrade.hpplay.cn^$important
