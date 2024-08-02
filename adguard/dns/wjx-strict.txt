@@ -31,9 +31,9 @@
 !! --------------------
 ! [Blocklist 正则匹配]
 !! --------------------
-/^.*(ads|dns|dot|log|stat|monitor).*(\.com|\.net|\.com\.cn|\.cn|\.cc|\.club|\.xyz|\.top|\.vip|\.pub)$/
-/^.*(httpdns).*(\.com|\.net|\.com\.cn|\.cn|\.cc|\.club|\.xyz|\.top|\.vip)$/
-/^.*(httpsdns).*(\.com|\.net|\.com\.cn|\.cn|\.cc|\.club|\.xyz|\.top|\.vip)$/
+! /^.*(ads|dns|dot|log|stat|monitor).*(\.com|\.net|\.com\.cn|\.cn|\.cc|\.club|\.xyz|\.top|\.vip|\.pub)$/
+! /^.*(httpdns).*(\.com|\.net|\.com\.cn|\.cn|\.cc|\.club|\.xyz|\.top|\.vip)$/
+! /^.*(httpsdns).*(\.com|\.net|\.com\.cn|\.cn|\.cc|\.club|\.xyz|\.top|\.vip)$/
 !! --------------------
 ![Whitelist]
 !! --------------------
