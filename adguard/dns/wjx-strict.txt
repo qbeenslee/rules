@@ -1458,10 +1458,10 @@
 ||igtm-c101.com
 ||igtm-d101.com
 ||nsv2.cn
-||dns.pub
-||doh.pub
-||dot.pub
-||doh.plus
+! ||dns.pub
+! ||doh.pub
+! ||dot.pub
+! ||doh.plus
 ! 【并夕夕专区】
 ||t*.pinduoduo.com^$important
 ||meta.pinduoduo.com^$important

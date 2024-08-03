@@ -1,12 +1,16 @@
 [AdGuard]
 ! Title: AdGuardHome拦截乐播投屏规则
-! Update Time: 2024-8-2 01:00:00
-! Ver.: 1.0.0
+! Update Time: 2024-8-3 01:00:00
+! Ver.: 1.0.1
 ! Update Details
 !! --------------------
 !! 更新误拦截及部分内容
 !! --------------------
+||huan.tv^$important
+||my7v.com^$important
+||lebo.cn^$important
 ||www.lebo.cn^$important
+||lebo.com.cn^$important
 ||hpplay.cdn.cibn.cc^$important
 ||g.dtv.cn.miaozhen.com^$important
 ||android.bugly.qq.com^$important
@@ -30,3 +34,14 @@
 ||sdkauth.hpplay.cn^$important
 ||vipauth.hpplay.cn^$important
 ||hotupgrade.hpplay.cn^$important
+||hotupgrade.lebo.com.cn^$important
+||sl.lebo.com.cn^$important
+||gslb.lebo.com.cn^$important
+||sdkauth.lebo.cn^$important
+||conf.lebo.com.cn^$important
+||tvapp.lebo.com.cn^$important
+||sdkauth.lebo.com.cn^$important
+||saas.lebo.com.cn^$important
+||tvapp.lebo.cn^$important
+||my7v.com^$important
+||adeng.lebo.com.cn^$important
