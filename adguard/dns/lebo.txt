@@ -6,6 +6,12 @@
 !! --------------------
 !! 更新误拦截及部分内容
 !! --------------------
+||atianqi.com^$important
+||leiniao.com^$important
+||tcl.com^$important
+||huantest.com^$important
+||tcloudfamily.com^$important
+||tclai.top^$important
 ||huan.tv^$important
 ||my7v.com^$important
 ||lebo.cn^$important
