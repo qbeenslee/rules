@@ -1,7 +1,7 @@
 [AdGuard]
 ! Title: AdGuardHome拦截乐播投屏规则
-! Update Time: 2024-8-3 01:00:00
-! Ver.: 1.0.1
+! Update Time: 2024-10-11 13:00:00
+! Ver.: 1.0.2
 ! Update Details
 !! --------------------
 !! 更新误拦截及部分内容
@@ -51,3 +51,5 @@
 ||tvapp.lebo.cn^$important
 ||my7v.com^$important
 ||adeng.lebo.com.cn^$important
+||tcldemo2.com^$important
+||tcldemo.com^$important
