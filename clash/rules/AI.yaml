@@ -14,458 +14,456 @@ payload:
 # ##### 主流AI应用 ######
 
 # > Ai general rules
-  - DOMAIN,api.statsig.com
-  - DOMAIN,browser-intake-datadoghq.com
-  - DOMAIN-SUFFIX,algolia.net
-  - DOMAIN-SUFFIX,auth0.com
-  - DOMAIN-SUFFIX,arkoselabs.com
-  - DOMAIN-SUFFIX,statsigapi.net
-  - DOMAIN-SUFFIX,featuregates.org
-  - DOMAIN-SUFFIX,identrust.com
-  - DOMAIN-SUFFIX,intercom.io
-  - DOMAIN-SUFFIX,intercomcdn.com
-  - DOMAIN-SUFFIX,launchdarkly.com
-  - DOMAIN,cdn-settings.segment.com
-  - DOMAIN,api.segment.io
-  - DOMAIN-SUFFIX,segment.io
-#   - DOMAIN-SUFFIX,amazonaws.com
-  - DOMAIN-SUFFIX,wp.com
-  - DOMAIN-SUFFIX,sentry.io
+  - 'api.statsig.com'
+  - 'browser-intake-datadoghq.com'
+  - '+.algolia.net'
+  - '+.auth0.com'
+  - '+.arkoselabs.com'
+  - '+.statsigapi.net'
+  - '+.featuregates.org'
+  - '+.identrust.com'
+  - '+.intercom.io'
+  - '+.intercomcdn.com'
+  - '+.launchdarkly.com'
+  - 'cdn-settings.segment.com'
+  - 'api.segment.io'
+  - '+.segment.io'
+#   - '+.amazonaws.com'
+  - '+.wp.com'
+  - '+.sentry.io'
 
 # > Stripe
-  - DOMAIN-SUFFIX,stripe.com
-  - DOMAIN-SUFFIX,stripe.network
-  - DOMAIN-SUFFIX,stripecdn.com
+  - '+.stripe.com'
+  - '+.stripe.network'
+  - '+.stripecdn.com'
 
 # > Apple Intelligence
-  - DOMAIN,apple-relay.apple.com
-  - DOMAIN,apple-relay.cloudflare.com
-  - DOMAIN,apple-relay.fastly-edge.com
-  - DOMAIN,cp4.cloudflare.com
-  - DOMAIN,guzzoni.apple.com
-  - DOMAIN-SUFFIX,smoot.apple.com
+  - 'apple-relay.apple.com'
+  - 'apple-relay.cloudflare.com'
+  - 'apple-relay.fastly-edge.com'
+  - 'cp4.cloudflare.com'
+  - 'guzzoni.apple.com'
+  - '+.smoot.apple.com'
 
 # > Anthropic Claude
-  - DOMAIN,console.anthropic.com
-  - DOMAIN,cdn.usefathom.com
-  - DOMAIN-SUFFIX,claude.ai
-  - DOMAIN-SUFFIX,anthropic.com
-  - DOMAIN-SUFFIX,claudeusercontent.com
-  - IP-CIDR,160.79.104.0/23,no-resolve
-  - IP-CIDR6,2607:6bc0::/48,no-resolve
+  - 'console.anthropic.com'
+  - 'cdn.usefathom.com'
+  - '+.claude.ai'
+  - '+.anthropic.com'
+  - '+.claudeusercontent.com'
+  - '160.79.104.0/23'
+  - '2607:6bc0::/48'
 
 # > ChatGPT
-  - DOMAIN,openai.com.cdn.cloudflare.net
-  - DOMAIN,openaicomproductionae4b.blob.core.windows.net
-  - DOMAIN,production-openaicom-storage.azureedge.net
-  - DOMAIN,turn.livekit.cloud
-  - DOMAIN,chatgpt.livekit.cloud
-  - DOMAIN,host.livekit.cloud
-  - DOMAIN-SUFFIX,livekit.cloud
-  - DOMAIN,api-iam.intercom.io
-  - DOMAIN,o33249.ingest.sentry.io
-  - DOMAIN,openaiapi-site.azureedge.net
+  - 'openai.com.cdn.cloudflare.net'
+  - 'openaicomproductionae4b.blob.core.windows.net'
+  - 'production-openaicom-storage.azureedge.net'
+  - 'turn.livekit.cloud'
+  - 'chatgpt.livekit.cloud'
+  - 'host.livekit.cloud'
+  - '+.livekit.cloud'
+  - 'api-iam.intercom.io'
+  - 'o33249.ingest.sentry.io'
+  - 'openaiapi-site.azureedge.net'
 # -> website
-  - DOMAIN-SUFFIX,chat.com
-  - DOMAIN-SUFFIX,chatgpt.com
-  - DOMAIN-SUFFIX,openai.com
-  - DOMAIN-SUFFIX,sora.com
-  - DOMAIN-SUFFIX,oaistatic.com
-  - DOMAIN-SUFFIX,oaiusercontent.com
-  - DOMAIN-SUFFIX,openaiapi.com
-  - DOMAIN-WILDCARD,chatgpt-async-webps-prod-*.webpubsub.azure.com
-  - DOMAIN-WILDCARD,openaicom-api-*.azurefd.net
-  - IP-CIDR,24.199.123.28/32,no-resolve
-  - IP-CIDR,64.23.132.171/32,no-resolve
-  - IP-ASN,20473,no-resolve
-  - DOMAIN-KEYWORD,openaiapi
-  - DOMAIN-KEYWORD,openaicom
+  - '+.chat.com'
+  - '+.chatgpt.com'
+  - '+.openai.com'
+  - '+.sora.com'
+  - '+.oaistatic.com'
+  - '+.oaiusercontent.com'
+  - '+.openaiapi.com'
+
+  - '24.199.123.28/32'
+  - '64.23.132.171/32'
+
 
 # -> Coze
-  - DOMAIN,coze.com
-  - DOMAIN,mssdk-i18n-sg.coze.com
-  - DOMAIN,mssdk-i18n-va.coze.com
-  - DOMAIN,mcs-sg.coze.com
-  - DOMAIN,mcs-va.coze.com
-  - DOMAIN,survey.coze.com
-  - DOMAIN,opt-i18n.coze.com
-  - DOMAIN,sf-coze-web-cdn.coze.com
-  - DOMAIN-SUFFIX,coze.com
+  - 'coze.com'
+  - 'mssdk-i18n-sg.coze.com'
+  - 'mssdk-i18n-va.coze.com'
+  - 'mcs-sg.coze.com'
+  - 'mcs-va.coze.com'
+  - 'survey.coze.com'
+  - 'opt-i18n.coze.com'
+  - 'sf-coze-web-cdn.coze.com'
+  - '+.coze.com'
 # -> ciciai
-  - DOMAIN,vmweb-va.ciciai.com
-  - DOMAIN,mcs-va.ciciai.com
-  - DOMAIN-SUFFIX,ciciai.com
-  - DOMAIN-SUFFIX,ciciaicdn.com
+  - 'vmweb-va.ciciai.com'
+  - 'mcs-va.ciciai.com'
+  - '+.ciciai.com'
+  - '+.ciciaicdn.com'
 # -> 字节系
-  - DOMAIN-SUFFIX,bytedapm.com
-  - DOMAIN-SUFFIX,byteoversea.com
-  - DOMAIN-SUFFIX,yhgfb-static.com
-  - DOMAIN-SUFFIX,itobsnssdk.com
-  - DOMAIN-SUFFIX,appsflyersdk.com
-  - DOMAIN-SUFFIX,oceanapi-i18n.com
-  - DOMAIN-SUFFIX,pipopay.com
-  - DOMAIN-SUFFIX,ttwstatic.com
-  - DOMAIN-SUFFIX,byteintlapi.com
+  - '+.bytedapm.com'
+  - '+.byteoversea.com'
+  - '+.yhgfb-static.com'
+  - '+.itobsnssdk.com'
+  - '+.appsflyersdk.com'
+  - '+.oceanapi-i18n.com'
+  - '+.pipopay.com'
+  - '+.ttwstatic.com'
+  - '+.byteintlapi.com'
 
 # > character
-  - DOMAIN-SUFFIX,characterai.io
-  - DOMAIN-SUFFIX,character.ai
+  - '+.characterai.io'
+  - '+.character.ai'
 
 # > chronicle
-  - DOMAIN-SUFFIX,chroniclehq.com
+  - '+.chroniclehq.com'
 
 # > Dify AI
-  - DOMAIN-SUFFIX,dify.ai
+  - '+.dify.ai'
 
 # Google
 # > AI Studio
-  - DOMAIN,ai.google.dev
-  - DOMAIN,aistudio.google.com
-  - DOMAIN,alkalicore-pa.clients6.google.com
-  - DOMAIN,alkalimakersuite-pa.clients6.google.com
-  - DOMAIN,jules.google.com
-  - DOMAIN,stitch.withgoogle.com
-  - DOMAIN-SUFFIX,autodraw.com
-  - DOMAIN-SUFFIX,ai.google
+  - 'ai.google.dev'
+  - 'aistudio.google.com'
+  - 'alkalicore-pa.clients6.google.com'
+  - 'alkalimakersuite-pa.clients6.google.com'
+  - 'jules.google.com'
+  - 'stitch.withgoogle.com'
+  - '+.autodraw.com'
+  - '+.ai.google'
 # > DeepMind
-  - DOMAIN,deepmind.com
-  - DOMAIN,deepmind.google
-  - DOMAIN-SUFFIX,deepmind.com
-  - DOMAIN-SUFFIX,deepmind.google
+  - 'deepmind.com'
+  - 'deepmind.google'
+  - '+.deepmind.com'
+  - '+.deepmind.google'
 # > Developer
-  - DOMAIN-SUFFIX,ai.google.dev
-  - DOMAIN-SUFFIX,aistudio.google.com
+  - '+.ai.google.dev'
+  - '+.aistudio.google.com'
 # > Gemini
-  - DOMAIN,bard.google.com
-  - DOMAIN,gemini.google.com
-  - DOMAIN,aida.googleapis.com
-  - DOMAIN,geller-pa.googleapis.com
-  - DOMAIN,generativeai.google
-  - DOMAIN,generativelanguage.googleapis.com
-  - DOMAIN,makersuite.google.com
-  - DOMAIN,proactivebackend-pa.googleapis.com
-  - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
-  - DOMAIN-SUFFIX,geller-pa.googleapis.com
-  - DOMAIN-SUFFIX,generativelanguage.googleapis.com
-  - DOMAIN-SUFFIX,apis.google.com
-  - DOMAIN-SUFFIX,clients6.google.com
-  - DOMAIN-SUFFIX,clients4.google.com
-  - DOMAIN-SUFFIX,generativeai.google
-  - DOMAIN-SUFFIX,colab.google.com
-  - DOMAIN-SUFFIX,colab.research.google.com
-  - DOMAIN-SUFFIX,developerprofiles.google.com
-  - DOMAIN-SUFFIX,googleusercontent.com
+  - 'bard.google.com'
+  - 'gemini.google.com'
+  - 'aida.googleapis.com'
+  - 'geller-pa.googleapis.com'
+  - 'generativeai.google'
+  - 'generativelanguage.googleapis.com'
+  - 'makersuite.google.com'
+  - 'proactivebackend-pa.googleapis.com'
+  - '+.proactivebackend-pa.googleapis.com'
+  - '+.geller-pa.googleapis.com'
+  - '+.generativelanguage.googleapis.com'
+  - '+.apis.google.com'
+  - '+.clients6.google.com'
+  - '+.clients4.google.com'
+  - '+.generativeai.google'
+  - '+.colab.google.com'
+  - '+.colab.research.google.com'
+  - '+.developerprofiles.google.com'
+  - '+.googleusercontent.com'
 # > Firebase Studio
-  - DOMAIN-SUFFIX,firebase.studio
-  - DOMAIN-SUFFIX,studio.firebase.google.com
+  - '+.firebase.studio'
+  - '+.studio.firebase.google.com'
 # > NotebookLM
-  - DOMAIN-KEYWORD,notebooklm.google
-  - DOMAIN-SUFFIX,notebooklm.google.com
+  # - DOMAIN-KEYWORD,notebooklm.google
+  - '+.notebooklm.google.com'
 # > Search Labs
-  - DOMAIN-SUFFIX,labs.google
-  - DOMAIN-SUFFIX,labs.google.com
-  - DOMAIN-KEYWORD,labs.google
+  - '+.labs.google'
+  - '+.labs.google.com'
+  # - DOMAIN-KEYWORD,labs.google
 
 # > Meta
-  - DOMAIN,imagine.meta.com
-  - DOMAIN-SUFFIX,ai.meta.com
-  - DOMAIN-SUFFIX,meta.ai
-  - DOMAIN-SUFFIX,llama.com
+  - 'imagine.meta.com'
+  - '+.ai.meta.com'
+  - '+.meta.ai'
+  - '+.llama.com'
 
 # Microsoft
 # > Copilot
-  - DOMAIN,copilot-proxy.githubusercontent.com
-  - DOMAIN,copilot.microsoft.com
-  - DOMAIN,gateway.bingviz.microsoft.net
-  - DOMAIN,gateway.bingviz.microsoftapp.net
-  - DOMAIN,in.appcenter.ms
-  - DOMAIN,location.microsoft.com
-  - DOMAIN,odc.officeapps.live.com
-  - DOMAIN,r.bing.com
-  - DOMAIN,self.events.data.microsoft.com
-  - DOMAIN,sydney.bing.com
-  - DOMAIN-SUFFIX,api.microsoftapp.net
-  - DOMAIN-SUFFIX,bing-shopping.microsoft-falcon.io
-  - DOMAIN-SUFFIX,edgeservices.bing.com
+  - 'copilot-proxy.githubusercontent.com'
+  - 'copilot.microsoft.com'
+  - 'gateway.bingviz.microsoft.net'
+  - 'gateway.bingviz.microsoftapp.net'
+  - 'in.appcenter.ms'
+  - 'location.microsoft.com'
+  - 'odc.officeapps.live.com'
+  - 'r.bing.com'
+  - 'self.events.data.microsoft.com'
+  - 'sydney.bing.com'
+  - '+.api.microsoftapp.net'
+  - '+.bing-shopping.microsoft-falcon.io'
+  - '+.edgeservices.bing.com'
 # > GitHub Copilot
-  - DOMAIN,api.githubcopilot.com
-  - DOMAIN-SUFFIX,githubcopilot.com
+  - 'api.githubcopilot.com'
+  - '+.githubcopilot.com'
 # > azure
-  - DOMAIN-SUFFIX,cognitiveservices.azure.com
-  - DOMAIN-SUFFIX,api.cognitive.microsoft.us
-  - DOMAIN-SUFFIX,api.cognitive.azure.cn
-  - DOMAIN-SUFFIX,cognitiveservices.azure.us
-  - DOMAIN-SUFFIX,cognitiveservices.azure.cn
-  - DOMAIN-SUFFIX,stt.speech.azure.us
-  - DOMAIN-SUFFIX,stt.speech.azure.cn
-  - DOMAIN,portal.customtranslator.azure.us
+  - '+.cognitiveservices.azure.com'
+  - '+.api.cognitive.microsoft.us'
+  - '+.api.cognitive.azure.cn'
+  - '+.cognitiveservices.azure.us'
+  - '+.cognitiveservices.azure.cn'
+  - '+.stt.speech.azure.us'
+  - '+.stt.speech.azure.cn'
+  - 'portal.customtranslator.azure.us'
 # > Azure Machine Learning (AML - Global)
-  - DOMAIN-SUFFIX,inference.ml.azure.com
-  - DOMAIN-SUFFIX,azureml.ms
+  - '+.inference.ml.azure.com'
+  - '+.azureml.ms'
 # > Common AI Dependencies (Global)
-  - DOMAIN-SUFFIX,search.windows.net
+  - '+.search.windows.net'
 # > Microsoft Copilot (M365 Integration - Global)
-  - DOMAIN-SUFFIX,copilot.microsoft.com
-  - DOMAIN,services.bingapis.com
-  - DOMAIN-SUFFIX,bingapis.com
-  - DOMAIN,m365copilot.com
-  - DOMAIN,copilot.cloud.microsoft
-  - DOMAIN,copilotstudio.microsoft.com
-  - DOMAIN-SUFFIX,msunlimitedcloudsummit.com
-  - DOMAIN-SUFFIX,microsoftcloudsummit.com
-  - DOMAIN,edgeservices.bing.com
-  - DOMAIN-SUFFIX,cortana.ai
+  - '+.copilot.microsoft.com'
+  - 'services.bingapis.com'
+  - '+.bingapis.com'
+  - 'm365copilot.com'
+  - 'copilot.cloud.microsoft'
+  - 'copilotstudio.microsoft.com'
+  - '+.msunlimitedcloudsummit.com'
+  - '+.microsoftcloudsummit.com'
+  - 'edgeservices.bing.com'
+  - '+.cortana.ai'
 
 # > Mistral AI
-  - DOMAIN,chat.mistral.ai
-  - DOMAIN,console.mistral.ai
-  - DOMAIN-SUFFIX,mistral.ai
+  - 'chat.mistral.ai'
+  - 'console.mistral.ai'
+  - '+.mistral.ai'
 
 # > Perplexity
-  - DOMAIN,pplx-res.cloudinary.com
-  - DOMAIN-SUFFIX,perplexity.com
-  - DOMAIN-SUFFIX,perplexity.ai
-  - DOMAIN-SUFFIX,pplx.ai
+  - 'pplx-res.cloudinary.com'
+  - '+.perplexity.com'
+  - '+.perplexity.ai'
+  - '+.pplx.ai'
 
 # > Poe
-  - DOMAIN-SUFFIX,poe.com
-  - DOMAIN-SUFFIX,poecdn.net
+  - '+.poe.com'
+  - '+.poecdn.net'
 
 # > xAI Grok
-  - DOMAIN,api.x.ai
-  - DOMAIN-SUFFIX,grok.com
-  - DOMAIN-SUFFIX,x.ai
+  - 'api.x.ai'
+  - '+.grok.com'
+  - '+.x.ai'
 
 
 
 # ##### 设计创意类 ######
 
 # > Adobe AI
-  - DOMAIN,dc-genai-access-provisioning-api.adobe.io
-  - DOMAIN,dc-genai-persistence.adobe.io
-  - DOMAIN,dc-genai-content-platform.adobe.io
-  - DOMAIN,mds-cdn.infra.adobesensei.io
-  - DOMAIN,senseimds.adobe.io
-  - DOMAIN-SUFFIX,sensei.adobe.io
-  - DOMAIN-SUFFIX,senseicore.adobe.io
+  - 'dc-genai-access-provisioning-api.adobe.io'
+  - 'dc-genai-persistence.adobe.io'
+  - 'dc-genai-content-platform.adobe.io'
+  - 'mds-cdn.infra.adobesensei.io'
+  - 'senseimds.adobe.io'
+  - '+.sensei.adobe.io'
+  - '+.senseicore.adobe.io'
 # # Adobe Firefly & Generative AI
-  - DOMAIN,pre-signed-firefly-prod.s3-accelerate.amazonaws.com
-  - DOMAIN,pre-signed-firefly-prod.s3.amazonaws.com
-  - DOMAIN,firefly.adobe.com
-  - DOMAIN,clio-assets.adobe.com
-  - DOMAIN,firefly-cliov2.adobe.com
-  - DOMAIN,firefly-ps.adobe.io
-  - DOMAIN,firefly-ai.adobe.io
+  - 'pre-signed-firefly-prod.s3-accelerate.amazonaws.com'
+  - 'pre-signed-firefly-prod.s3.amazonaws.com'
+  - 'firefly.adobe.com'
+  - 'clio-assets.adobe.com'
+  - 'firefly-cliov2.adobe.com'
+  - 'firefly-ps.adobe.io'
+  - 'firefly-ai.adobe.io'
 
 # Canva
-  - DOMAIN-SUFFIX,canva.site
-  - DOMAIN-SUFFIX,canva.dev
-#   - DOMAIN-SUFFIX,canva.cn
-  - DOMAIN-SUFFIX,canva.com
-  - DOMAIN-SUFFIX,zeetings.com
-  - DOMAIN-SUFFIX,smartmockups.com
+  - '+.canva.site'
+  - '+.canva.dev'
+#   - '+.canva.cn'
+  - '+.canva.com'
+  - '+.zeetings.com'
+  - '+.smartmockups.com'
 
 # > lovart
-#   - DOMAIN-SUFFIX,lovart.ai
+#   - '+.lovart.ai'
 
 # > leonardo
-  - DOMAIN-SUFFIX,leonardo.ai
+  - '+.leonardo.ai'
 
 # > Midjourney
-  - DOMAIN-SUFFIX,midjourney.com
+  - '+.midjourney.com'
 
 
 
 # ##### 开发编程类 ######
 
 # > Trae AI
-  - DOMAIN,trae-api-sg.mchost.guru
-  - DOMAIN-SUFFIX,trae.ai
+  - 'trae-api-sg.mchost.guru'
+  - '+.trae.ai'
 
 # > Cursor
-  - DOMAIN-SUFFIX,cursor-cdn.com
-  - DOMAIN-SUFFIX,cursor.com
-  - DOMAIN-SUFFIX,cursor.sh
-  - DOMAIN-SUFFIX,cursorapi.com
+  - '+.cursor-cdn.com'
+  - '+.cursor.com'
+  - '+.cursor.sh'
+  - '+.cursorapi.com'
 
 # > Huggingface
-  - DOMAIN-SUFFIX,huggingface.co
-  - DOMAIN-SUFFIX,hf.co
+  - '+.huggingface.co'
+  - '+.hf.co'
 
 # > JetBrains AI
-  - DOMAIN-SUFFIX,grazie.ai
-  - DOMAIN-SUFFIX,grazie.aws.intellij.net
-  - DOMAIN-SUFFIX,jetbrains.ai
+  - '+.grazie.ai'
+  - '+.grazie.aws.intellij.net'
+  - '+.jetbrains.ai'
 
 # > vercel
-  - DOMAIN-SUFFIX,v0.dev
-  - DOMAIN-SUFFIX,vercel.com
-  - DOMAIN-SUFFIX,vercel.sh
-  - DOMAIN-SUFFIX,ethyca.com
+  - '+.v0.dev'
+  - '+.vercel.com'
+  - '+.vercel.sh'
+  - '+.ethyca.com'
 
 # windsurf
-  - DOMAIN-SUFFIX,windsurf.com
-  - DOMAIN-SUFFIX,codeium.com
+  - '+.windsurf.com'
+  - '+.codeium.com'
 
 # Zed 编辑器
-  - DOMAIN-SUFFIX,zed.dev
+  - '+.zed.dev'
 
 
 # ##### API服务商 ######
 
 # > Cloudflare AI Gateway
-  - DOMAIN,gateway.ai.cloudflare.com
-#   - DOMAIN,static.cloudflareinsights.com
-#   - DOMAIN-SUFFIX,cloudflare.com
+  - 'gateway.ai.cloudflare.com'
+#   - 'static.cloudflareinsights.com'
+#   - '+.cloudflare.com'
 
 # > openrouter
-  - DOMAIN-SUFFIX,openrouter.ai
+  - '+.openrouter.ai'
 
 
 # ##### 浏览器 ######
 
 # > Arc
-  - DOMAIN-SUFFIX,arc.net
+  - '+.arc.net'
 
 # > DIA
-  - DOMAIN,releases.diabrowser.com
-  - DOMAIN,account.diabrowser.engineering
-  - DOMAIN,dia-blocklists-release.diabrowser.engineering
-  - DOMAIN-SUFFIX,diabrowser.engineering
-  - IP-CIDR,45.76.221.157/32,no-resolve
-  - IP-CIDR,81.168.83.93/32,no-resolve
-  - IP-CIDR,95.111.202.5/32,no-resolve
-  - IP-CIDR,108.59.2.24/32,no-resolve
-  - IP-CIDR,116.203.151.74/32,no-resolve
-  - IP-CIDR,162.159.200.0/24,no-resolve
-#   - IP-CIDR,162.159.200.1/32,no-resolve
-#   - IP-CIDR,162.159.200.123/32,no-resolve
-  - IP-CIDR,193.182.111.0/24,no-resolve
-#   - IP-CIDR,193.182.111.12/32,no-resolve
-#   - IP-CIDR,193.182.111.14/32,no-resolve
-#   - IP-CIDR,193.182.111.143/32,no-resolve
-#   - IP-CIDR,193.182.111.142/32,no-resolve
-#   - IP-CIDR,193.182.111.141/32,no-resolve
-  - IP-CIDR6,2606:4700:f1::123/128,no-resolve
-  - IP-CIDR6,2001:67c:21bc:1e::123/128,no-resolve
-  - IP-CIDR6,2a03:8600::cc/128,no-resolve
+  - 'releases.diabrowser.com'
+  - 'account.diabrowser.engineering'
+  - 'dia-blocklists-release.diabrowser.engineering'
+  - '+.diabrowser.engineering'
+  - '45.76.221.157/32'
+  - '81.168.83.93/32'
+  - '95.111.202.5/32'
+  - '108.59.2.24/32'
+  - '116.203.151.74/32'
+  - '162.159.200.0/24'
+#   - '162.159.200.1/32'
+#   - '162.159.200.123/32'
+  - '193.182.111.0/24'
+#   - '193.182.111.12/32'
+#   - '193.182.111.14/32'
+#   - '193.182.111.143/32'
+#   - '193.182.111.142/32'
+#   - '193.182.111.141/32'
+  - '2606:4700:f1::123/128'
+  - '2001:67c:21bc:1e::123/128'
+  - '2a03:8600::cc/128'
 
 # > Surf
-  - DOMAIN-SUFFIX,deta.space
-  - DOMAIN-SUFFIX,deta.surf
+  - '+.deta.space'
+  - '+.deta.surf'
 
 
 
 # ##### 其他AI应用 ######
 
 # AIVA (Media Generation)
-  - DOMAIN-SUFFIX,aiva.ai
+  - '+.aiva.ai'
 
 # Any.do (AI task)
-  - DOMAIN-SUFFIX,any.do
+  - '+.any.do'
 
 # Anyword (Content creation)
-  - DOMAIN-SUFFIX,anyword.com
+  - '+.anyword.com'
 
 # Asana (AI task)
-  - DOMAIN-SUFFIX,asana.com
-  - DOMAIN-SUFFIX,asana.biz
+  - '+.asana.com'
+  - '+.asana.biz'
 
 # Avoma (AI transcription)
-  - DOMAIN-SUFFIX,avoma.com
+  - '+.avoma.com'
 
 # BeeDone (AI task)
-  - DOMAIN-SUFFIX,beedone.co
+  - '+.beedone.co'
 
 # Beautiful.ai (Presentations)
-  - DOMAIN-SUFFIX,beautiful.ai
+  - '+.beautiful.ai'
 
 # Buffer (Social media)
-  - DOMAIN-SUFFIX,buffer.com
-  - DOMAIN-SUFFIX,bufferapp.com
+  - '+.buffer.com'
+  - '+.bufferapp.com'
 
 # Clockwise (AI transcription)
-  - DOMAIN-SUFFIX,clockwise.ai
-  - DOMAIN-SUFFIX,getclockwise.com
+  - '+.clockwise.ai'
+  - '+.getclockwise.com'
 
 # ElevenLabs (Media Generation)
-  - DOMAIN,api.elevenlabs.io
-  - DOMAIN-SUFFIX,elevenlabs.io
+  - 'api.elevenlabs.io'
+  - '+.elevenlabs.io'
 
 # Enhancv (Resume)
-  - DOMAIN-SUFFIX,enhancv.com
+  - '+.enhancv.com'
 
 # FeedHive (Social media)
-  - DOMAIN-SUFFIX,feedhive.io
-  - DOMAIN-SUFFIX,feedhive.com
+  - '+.feedhive.io'
+  - '+.feedhive.com'
 
 # Fireflies (AI transcription)
-  - DOMAIN-SUFFIX,fireflies.ai
+  - '+.fireflies.ai'
 
 # > genspark
-  - DOMAIN-SUFFIX,genspark.ai
+  - '+.genspark.ai'
 
 # Grammarly (Grammar Checker)
-  - DOMAIN-SUFFIX,grammarly.ai
-  - DOMAIN-SUFFIX,grammarly.com
+  - '+.grammarly.ai'
+  - '+.grammarly.com'
 
 # Kickresume (Resume)
-  - DOMAIN-SUFFIX,kickresume.com
+  - '+.kickresume.com'
 
 # Mem (Knowledge management)
-  - DOMAIN-SUFFIX,mem.ai
+  - '+.mem.ai'
 
 # Motion (AI scheduling)
-  - DOMAIN-SUFFIX,usemotion.com
+  - '+.usemotion.com'
 
 # novita
-  - DOMAIN-SUFFIX,novita.ai
+  - '+.novita.ai'
 
 # ProWritingAid
-  - DOMAIN-SUFFIX,prowritingaid.com
+  - '+.prowritingaid.com'
 
 # Reclaim (AI scheduling)
-  - DOMAIN-SUFFIX,reclaim.ai
+  - '+.reclaim.ai'
 
 # Runway (Media Generation)
-  - DOMAIN-SUFFIX,runwayml.com
+  - '+.runwayml.com'
 
 # Shortwave (Email)
-  - DOMAIN-SUFFIX,shortwave.com
-  - DOMAIN-SUFFIX,shortwave.app
+  - '+.shortwave.com'
+  - '+.shortwave.app'
 
 # Slidesgo (Presentations)
-  - DOMAIN-SUFFIX,slidesgo.com
+  - '+.slidesgo.com'
 
 # Suno (Media Generation)
-  - DOMAIN-SUFFIX,suno.ai
-  - DOMAIN-SUFFIX,suno.com
+  - '+.suno.ai'
+  - '+.suno.com'
 
 # Teal (Resume)
-  - DOMAIN-SUFFIX,tealhq.com
+  - '+.tealhq.com'
 
 # tl;dv (AI transcription)
-  - DOMAIN-SUFFIX,tldv.io
+  - '+.tldv.io'
 
 # Tome (Presentations)
-  - DOMAIN-SUFFIX,tome.app
+  - '+.tome.app'
 
 # Wondershare Filmora (Media Generation)
-  - DOMAIN-SUFFIX,wondershare.com
+  - '+.wondershare.com'
 
 # Wordtune (Grammar Checker)
-  - DOMAIN-SUFFIX,wordtune.com
+  - '+.wordtune.com'
 
 # Writer (Content creation)
-  - DOMAIN-SUFFIX,writer.com
+  - '+.writer.com'
 
 # Zapier (Automation)
-  - DOMAIN-SUFFIX,zapier.com
+  - '+.zapier.com'
 
 # others
-  - DOMAIN-SUFFIX,workos.com
-  - DOMAIN-SUFFIX,ai.com
-  - DOMAIN-SUFFIX,you.com
-  - DOMAIN-SUFFIX,openart.ai
-  - DOMAIN-SUFFIX,groq.com
-  - DOMAIN-SUFFIX,jasper.ai
+  - '+.workos.com'
+  - '+.ai.com'
+  - '+.you.com'
+  - '+.openart.ai'
+  - '+.groq.com'
+  - '+.jasper.ai'
+
