@@ -327,6 +327,7 @@ payload:
 # > DIA
   - 'releases.diabrowser.com'
   - 'account.diabrowser.engineering'
+  - '+.diabrowser.com'
   - 'dia-blocklists-release.diabrowser.engineering'
   - '+.diabrowser.engineering'
   - '45.76.221.157/32'
