@@ -1,14 +1,15 @@
-# Update: 20260306
+# Update: 20260625
 # From: https://raw.githubusercontent.com/shangrenxi/Rules/refs/heads/master/rules/AI.yaml
 
-
-# Update: 20260114
+# Update: 20260602
 # please use US IP to access and use
 # 主要更新：
+# https://github.com/dler-io/Rules/blob/main/Surge/Surge%203/Provider/AI%20Suite.list
 # https://github.com/SukkaW/Surge/blob/master/Source/non_ip/ai.conf
 # https://github.com/ConnersHua/RuleGo/blob/master/Surge/Ruleset/Extra/AI.list
 # https://kelee.one/Tool/Loon/Lsr/AI.lsr
 # https://gist.github.com/ddgksf2013/cb4121e8b5c5d865cc949cb8120320c4
+# https://github.com/Accademia/Additional_Rule_For_Clash/blob/main/Gemini/Gemini_No_Resolve.yaml
 
 # 来自官方
 # AppleAI: https://support.apple.com/zh-cn/101555
@@ -25,12 +26,13 @@ payload:
 # ##### 主流AI应用 ######
 
 # > Ai general rules
-  - DOMAIN,api.statsig.com
+#   - DOMAIN,api.statsig.com
   - DOMAIN,browser-intake-datadoghq.com
   - DOMAIN-SUFFIX,algolia.net
   - DOMAIN-SUFFIX,auth0.com
   - DOMAIN-SUFFIX,arkoselabs.com
   - DOMAIN-SUFFIX,featuregates.org
+  - DOMAIN-SUFFIX,featureassets.org
   - DOMAIN-SUFFIX,identrust.com
   - DOMAIN-SUFFIX,intercom.io
   - DOMAIN-SUFFIX,intercomcdn.com
@@ -42,6 +44,11 @@ payload:
   - DOMAIN-SUFFIX,sentry.io
 #   - DOMAIN,api.honeycomb.io
   - DOMAIN-SUFFIX,honeycomb.io
+  - DOMAIN-SUFFIX,ct.sendgrid.net
+  - DOMAIN-SUFFIX,intercom.io
+  - DOMAIN-SUFFIX,intercomcdn.com
+  - DOMAIN,cdn.usefathom.com
+  - DOMAIN-SUFFIX,prodregistryv2.org
 
 # > segment.com
 #   - DOMAIN,cdn-settings.segment.com
@@ -51,6 +58,7 @@ payload:
   - DOMAIN-SUFFIX,segmentify.com
 
 # > Stripe
+  - DOMAIN,js.stripe.com
   - DOMAIN-SUFFIX,stripe.com
   - DOMAIN-SUFFIX,stripe.network
   - DOMAIN-SUFFIX,stripecdn.com
@@ -59,6 +67,7 @@ payload:
   - DOMAIN-SUFFIX,apple-relay.apple.com
   - DOMAIN-SUFFIX,apple-relay.cloudflare.com
   - DOMAIN-SUFFIX,apple-relay.fastly-edge.com
+  - DOMAIN-SUFFIX,apple-relay.mask.apple-dns.net
   - DOMAIN-SUFFIX,gateway.icloud.com
   - DOMAIN-SUFFIX,cp2.cloudflare.com
   - DOMAIN-SUFFIX,cp4.cloudflare.com
@@ -70,29 +79,39 @@ payload:
   - DOMAIN-SUFFIX,smoot.apple.com
 
 # > Anthropic Claude
-  - DOMAIN,console.anthropic.com
-  - DOMAIN,cdn.usefathom.com
-  - DOMAIN-SUFFIX,claude.ai
+# claude分流参考：https://ip.net.coffee/claude/site.html 和 NTP分流 https://rawstatic.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/category-ntp.list
+# 核心域名（  - DOMAIN-SUFFIX 已覆盖所有 *.anthropic.com 子域名）
   - DOMAIN-SUFFIX,anthropic.com
+  - DOMAIN-SUFFIX,claude.ai
+  - DOMAIN-SUFFIX,claude.com
+  - DOMAIN-SUFFIX,clau.de
+  - DOMAIN-SUFFIX,claudemcpclient.com
+  - DOMAIN-SUFFIX,claudemcpcontent.com
   - DOMAIN-SUFFIX,claudeusercontent.com
-  - DOMAIN-WILDCARD,*-cdn.anthropic.com
-  - IP-CIDR,160.79.104.0/23,no-resolve
-  - IP-CIDR6,2607:6bc0::/48,no-resolve
+# CDN 和静态资源
+  - DOMAIN,servd-anthropic-website.b-cdn.net
+  - DOMAIN,anthropic.com.cdn.cloudflare.net
+# 认证 / 内容
+  - DOMAIN,anthropic.auth0.com
+  - DOMAIN,anthropic-com.ghost.io
+# 监控和遥测
+#   - DOMAIN-SUFFIX,sentry.io
+#   - DOMAIN-SUFFIX,statsigapi.net
+  - DOMAIN,browser-intake-us5-datadoghq.com
+  - DOMAIN-KEYWORD,datadog
+  - DOMAIN-KEYWORD,sift
+# IP 段 / ASN 兜底
+  - IP-CIDR,160.79.104.0/21,no-resolve
+  - IP-CIDR6,2607:6bc0::/32,no-resolve
+  - IP-ASN,399358,no-resolve
 
 # > ChatGPT
   - DOMAIN,chatgpt.livekit.cloud
   - DOMAIN,host.livekit.cloud
   - DOMAIN,openai.com.cdn.cloudflare.net
   - DOMAIN,openaiapi-site.azureedge.net
-  - DOMAIN,openaicomproductionae4b.blob.core.windows.net
-  - DOMAIN,production-openaicom-storage.azureedge.net
   - DOMAIN,turn.livekit.cloud
 #   - DOMAIN-SUFFIX,livekit.cloud
-  - DOMAIN,api-iam.intercom.io
-  - DOMAIN,o33249.ingest.sentry.io
-  - DOMAIN,openaiapi-site.azureedge.net
-# > sora
-  - DOMAIN,sora.chatgpt.com
 # -> website
   - DOMAIN-SUFFIX,chat.com
   - DOMAIN-SUFFIX,chatgpt.com
@@ -101,11 +120,32 @@ payload:
   - DOMAIN-SUFFIX,openaiapi.com
   - DOMAIN-SUFFIX,openai.com
   - DOMAIN-SUFFIX,sora.com
+# > Chat GPT API & CDN
+  - DOMAIN,cdn.openaimerge.com
+  - DOMAIN,cdn.workos.com
+  - DOMAIN,challenges.cloudflare.com
+  - DOMAIN,chat.openai.com.cdn.cloudflare.net
+  - DOMAIN,forwarder.workos.com
+  - DOMAIN,humb.apple.com
+  - DOMAIN,images.workoscdn.com
+  - DOMAIN,o207216.ingest.sentry.io
+  - DOMAIN,o33249.ingest.sentry.io
+  - DOMAIN,openaiapi-site.azureedge.net
   - DOMAIN-WILDCARD,chatgpt-async-webps-prod-*.webpubsub.azure.com
-  - DOMAIN-WILDCARD,openaicom-api-*.azurefd.net
+  - DOMAIN-WILDCARD,chatgpt-api-*.*.azurefd.net
+  - DOMAIN-WILDCARD,openaicom-api-*.*.windows.net
+#   - DOMAIN,openaicomproductionae4b.blob.core.windows.net
+  - DOMAIN-WILDCARD,openaicom*.azurefd.net
+#   - DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
+  - DOMAIN,production-openaicom-storage.azureedge.net
+  - DOMAIN,rum.browser-intake-datadoghq.com
+  - DOMAIN,setup.workos.com
+  - DOMAIN,workos.imgix.net
+#兜底
   - IP-CIDR,24.199.123.28/32,no-resolve
   - IP-CIDR,64.23.132.171/32,no-resolve
   - IP-ASN,20473,no-resolve
+  - DOMAIN-KEYWORD,openai
   - DOMAIN-KEYWORD,openaiapi
   - DOMAIN-KEYWORD,openaicom
 
@@ -136,7 +176,6 @@ payload:
   - DOMAIN-SUFFIX,pipopay.com
   - DOMAIN-SUFFIX,ttwstatic.com
   - DOMAIN-SUFFIX,byteintlapi.com
-  - DOMAIN-SUFFIX,abtest-sg.byteoversea.com
 
 # > character
   - DOMAIN-SUFFIX,characterai.io
@@ -157,17 +196,18 @@ payload:
   - DOMAIN-SUFFIX,open-vsx.org
   - DOMAIN-SUFFIX,default.exp-tas.com
   - DOMAIN-SUFFIX,daily-cloudcode-pa.sandbox.googleapis.com
-  - DOMAIN-SUFFIX,daily-cloudcode-pa.googleapis.com
+#    - DOMAIN-SUFFIX,daily-cloudcode-pa.googleapis.com
+#    - DOMAIN-SUFFIX,antigravity-pa.googleapis.com
+  - DOMAIN-SUFFIX,antigravity.googleapis.com
   - DOMAIN-WILDCARD,antigravity-auto-updater-*.us-central*.run.app
 # > AI Studio
   - DOMAIN-SUFFIX,g.ai
   - DOMAIN-SUFFIX,ai.google.dev
   - DOMAIN-SUFFIX,aistudio.google.com
-  - DOMAIN-SUFFIX,alkalicore-pa.clients6.google.com
-  - DOMAIN-SUFFIX,alkalimakersuite-pa.clients6.google.com
-  - DOMAIN-SUFFIX,webchannel-alkalimakersuite-pa.clients6.google.com
-  - DOMAIN-SUFFIX,ogads-pa.clients6.google.com
-  - DOMAIN-SUFFIX,waa-pa.clients6.google.com
+#    - DOMAIN-SUFFIX,alkalicore-pa.clients6.google.com
+#    - DOMAIN-SUFFIX,alkalimakersuite-pa.clients6.google.com
+#    - DOMAIN-SUFFIX,webchannel-alkalimakersuite-pa.clients6.google.com
+#    - DOMAIN-SUFFIX,waa-pa.clients6.google.com
 
   - DOMAIN-SUFFIX,makersuite.google.com
   - DOMAIN-SUFFIX,apis.google.com
@@ -188,43 +228,48 @@ payload:
 # > Gemini
   - DOMAIN-SUFFIX,gemini.google
   - DOMAIN-SUFFIX,gemini.google.com
-  - DOMAIN-SUFFIX,aisandbox-pa.googleapis.com
+#    - DOMAIN-SUFFIX,aisandbox-pa.googleapis.com
+# HTTP 429修复
+  - DOMAIN-REGEX,https://www\.google\.com/.*continue=https://gemini\.google\.com.+
+
  # Gemini app firewall hosts
-  - DOMAIN-SUFFIX,www.google-analytics.com
-  - DOMAIN-SUFFIX,static.doubleclick.net
-  - DOMAIN-SUFFIX,td.doubleclick.net
-  - DOMAIN-SUFFIX,lh5.googleusercontent.com
-  - DOMAIN-SUFFIX,lh3.googleusercontent.com
   - DOMAIN-SUFFIX,csp.withgoogle.com
   - DOMAIN-SUFFIX,www.googletagmanager.com
-  - DOMAIN-SUFFIX,googleads.g.doubleclick.net
-  - DOMAIN-SUFFIX,i.ytimg.com
-  - DOMAIN-SUFFIX,yt3.ggpht.com
+
 
 # > Generative Language API
   - DOMAIN-SUFFIX,generativeai.google
   - DOMAIN-SUFFIX,generativelanguage.googleapis.com
-  - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
+#    - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
   - DOMAIN-SUFFIX,www.googleapis.com
   - DOMAIN-SUFFIX,maps.googleapis.com
   - DOMAIN-SUFFIX,fonts.googleapis.com
-  - DOMAIN-SUFFIX,jnn-pa.googleapis.com
-  - DOMAIN-SUFFIX,streetviewpixels-pa.googleapis.com
+#    - DOMAIN-SUFFIX,jnn-pa.googleapis.com
+#    - DOMAIN-SUFFIX,streetviewpixels-pa.googleapis.com
   - DOMAIN-SUFFIX,content-autofill.googleapis.com
-  - DOMAIN-SUFFIX,robinfrontend-pa.googleapis.com
-  - DOMAIN-SUFFIX,cloudcode-pa.googleapis.com
-  - DOMAIN-SUFFIX,geller-pa.googleapis.com
+#    - DOMAIN-SUFFIX,robinfrontend-pa.googleapis.com
+#    - DOMAIN-SUFFIX,cloudcode-pa.googleapis.com
+#    - DOMAIN-SUFFIX,geller-pa.googleapis.com
+  - DOMAIN-SUFFIX,speech.googleapis.com
+
+# google登录授权
+  - DOMAIN-SUFFIX,oauth2.googleapis.com
 
 # Google CDN
-  - DOMAIN-SUFFIX,www.gstatic.com
+#   - DOMAIN-SUFFIX,www.gstatic.com
   - DOMAIN-SUFFIX,fonts.gstatic.com
   - DOMAIN-SUFFIX,ssl.gstatic.com
   - DOMAIN-SUFFIX,maps.gstatic.com
+  - DOMAIN-SUFFIX,i.ytimg.com
+  - DOMAIN-SUFFIX,yt3.ggpht.com
+#    - DOMAIN-SUFFIX,googleusercontent.com
+#    - DOMAIN-SUFFIX,gstatic.com
+#    - DOMAIN-SUFFIX,ggpht.com
+
 
 # google定位服务所在地
   - DOMAIN-SUFFIX,ipv4.google.com
 
-#   - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
 # 误伤太大，先关掉域名后缀匹配
 #   - DOMAIN-SUFFIX,googleapis.com
 
@@ -234,18 +279,18 @@ payload:
   - DOMAIN-SUFFIX,colab.google.com
   - DOMAIN-SUFFIX,colab.research.google.com
   - DOMAIN-SUFFIX,developerprofiles.google.com
-  - DOMAIN-SUFFIX,googleusercontent.com
-  - DOMAIN-SUFFIX,playwright.azureedge.net
+
 # > Firebase Studio
   - DOMAIN-SUFFIX,firebase.studio
   - DOMAIN-SUFFIX,studio.firebase.google.com
 # > NotebookLM
   - DOMAIN-SUFFIX,notebooklm.google.com
   - DOMAIN-SUFFIX,notebooklm.google
+#    - DOMAIN-SUFFIX,notebooklm-pa.googleapis.com
+  - DOMAIN-SUFFIX,notebooklm.googleapis.com
 # > Jules
   - DOMAIN-SUFFIX,jules.google.com
-# Vertex AI
-  - DOMAIN-SUFFIX,aiplatform.googleapis.com
+
 # > Search Labs
 #    - DOMAIN,labs.google
   - DOMAIN-SUFFIX,labs.google
@@ -255,13 +300,25 @@ payload:
   - DOMAIN-SUFFIX,autodraw.com
   - DOMAIN-KEYWORD,labs.google
 
-# > AI Mode
-  - DOMAIN-SUFFIX,optimizationguide-pa.googleapis.com
-#    - DOMAIN-SUFFIX,encrypted-tbn0.gstatic.com
-#    - DOMAIN-SUFFIX,encrypted-tbn1.gstatic.com
-#    - DOMAIN-SUFFIX,encrypted-tbn2.gstatic.com
-#    - DOMAIN-SUFFIX,encrypted-tbn3.gstatic.com
+# 多模态
+  - DOMAIN-SUFFIX,secretmanager.googleapis.com
+  - DOMAIN-SUFFIX,aiplatform.googleapis.com
+  - DOMAIN-SUFFIX,cloudaicompanion.googleapis.com
+
+# 通配符匹配
+  - DOMAIN-WILDCARD,lcontent-*.googleapis.com
+  - DOMAIN-WILDCARD,lh*.googleusercontent.com
+  - DOMAIN-WILDCARD,lh*.google.com
   - DOMAIN-WILDCARD,encrypted-tbn*.gstatic.com
+  - DOMAIN-WILDCARD,*-pa.clients*.google.com
+  - DOMAIN-WILDCARD,*-pa.googleapis.com
+
+# > AD
+  - DOMAIN-SUFFIX,googleads.g.doubleclick.net
+  - DOMAIN-SUFFIX,www.google-analytics.com
+  - DOMAIN-SUFFIX,static.doubleclick.net
+  - DOMAIN-SUFFIX,td.doubleclick.net
+#    - DOMAIN-SUFFIX,ogads-pa.clients6.google.com
 
 # > Meta
   - DOMAIN,imagine.meta.com
@@ -288,6 +345,7 @@ payload:
   - DOMAIN,api.githubcopilot.com
   - DOMAIN-SUFFIX,githubcopilot.com
 # > azure
+  - DOMAIN-SUFFIX,playwright.azureedge.net
   - DOMAIN-SUFFIX,cognitiveservices.azure.com
   - DOMAIN-SUFFIX,api.cognitive.microsoft.us
   - DOMAIN-SUFFIX,api.cognitive.azure.cn
@@ -333,7 +391,8 @@ payload:
   - DOMAIN,api.x.ai
   - DOMAIN-SUFFIX,grok.com
   - DOMAIN-SUFFIX,x.ai
-  - DOMAIN-SUFFIX,featureassets.org
+  - DOMAIN-SUFFIX,xai.chronosphere.io
+  - IP-CIDR,17.253.4.125/32
 
 
 # ##### 设计创意类 ######
@@ -364,7 +423,7 @@ payload:
   - DOMAIN-SUFFIX,smartmockups.com
 
 # > lovart
-#   - DOMAIN-SUFFIX,lovart.ai
+  - DOMAIN-SUFFIX,lovart.ai
 
 # > leonardo
   - DOMAIN-SUFFIX,leonardo.ai
@@ -372,18 +431,24 @@ payload:
 # > Midjourney
   - DOMAIN-SUFFIX,midjourney.com
 
+  - DOMAIN-SUFFIX,fal.ai
+
 
 # ##### 开发编程类 ######
 
 # > Trae AI
   - DOMAIN,trae-api-sg.mchost.guru
   - DOMAIN-SUFFIX,trae.ai
+  - DOMAIN-SUFFIX,traeapi.us
 
 # > Cursor
   - DOMAIN-SUFFIX,cursor-cdn.com
   - DOMAIN-SUFFIX,cursor.com
   - DOMAIN-SUFFIX,cursor.sh
   - DOMAIN-SUFFIX,cursorapi.com
+
+# > factory
+  - DOMAIN-SUFFIX,factory.ai
 
 # > Huggingface
   - DOMAIN-SUFFIX,huggingface.co
@@ -416,7 +481,6 @@ payload:
 
 # Kiro 编辑器
   - DOMAIN-SUFFIX,kiro.dev
-  - DOMAIN-SUFFIX,amazonaws.com
 
 # DevvAI 服务
   - DOMAIN-SUFFIX, devv.ai
@@ -451,6 +515,7 @@ payload:
   - DOMAIN-SUFFIX,arc.net
 
 # > DIA
+  - DOMAIN-SUFFIX,diabrowser.engineering
 #   - DOMAIN,releases.diabrowser.com
   - DOMAIN,account.diabrowser.engineering
   - DOMAIN,ai-service.diabrowser.engineering
@@ -512,6 +577,9 @@ payload:
 # Buffer (Social media)
   - DOMAIN-SUFFIX,buffer.com
   - DOMAIN-SUFFIX,bufferapp.com
+
+# Cerebras
+  - DOMAIN-SUFFIX,cerebras.ai
 
 # Clockwise (AI transcription)
   - DOMAIN-SUFFIX,clockwise.ai
@@ -607,3 +675,121 @@ payload:
   - DOMAIN-SUFFIX,openart.ai
   - DOMAIN-SUFFIX,groq.com
   - DOMAIN-SUFFIX,jasper.ai
+
+# NTP over UDP
+  - DOMAIN,time.apple.com
+  - DOMAIN,time.asia.apple.com
+  - DOMAIN,time.euro.apple.com
+  - DOMAIN,time.aws.com
+  - DOMAIN,time.cloudflare.com
+  - DOMAIN,time.facebook.com
+  - DOMAIN,time1.facebook.com
+  - DOMAIN,time2.facebook.com
+  - DOMAIN,time3.facebook.com
+  - DOMAIN,time4.facebook.com
+  - DOMAIN,time5.facebook.com
+  - DOMAIN,time.google.com
+  - DOMAIN,time1.google.com
+  - DOMAIN,time2.google.com
+  - DOMAIN,time3.google.com
+  - DOMAIN,time4.google.com
+  - DOMAIN,ntp.ubuntu.com
+  - DOMAIN,time.windows.com
+  - DOMAIN,ut1-wwv.nist.gov
+  - DOMAIN,ntp-b.nist.gov
+  - DOMAIN,ntp-d.nist.gov
+  - DOMAIN,ntp-wwv.nist.gov
+  - DOMAIN,time.nist.gov
+  - DOMAIN,time-a-g.nist.gov
+  - DOMAIN,time-b-g.nist.gov
+  - DOMAIN,time-c-g.nist.gov
+  - DOMAIN,time-d-g.nist.gov
+  - DOMAIN,time-e-g.nist.gov
+  - DOMAIN,time-a-b.nist.gov
+  - DOMAIN,time-b-b.nist.gov
+  - DOMAIN,time-c-b.nist.gov
+  - DOMAIN,time-d-b.nist.gov
+  - DOMAIN,time-e-b.nist.gov
+  - DOMAIN,time-a-wwv.nist.gov
+  - DOMAIN,time-b-wwv.nist.gov
+  - DOMAIN,time-c-wwv.nist.gov
+  - DOMAIN,time-d-wwv.nist.gov
+  - DOMAIN,time-e-wwv.nist.gov
+  - DOMAIN,ntp-c.colorado.edu
+  - DOMAIN,ut1-time.colorado.edu
+  - DOMAIN,utcnist.colorado.edu
+  - DOMAIN,utcnist2.colorado.edu
+  - DOMAIN,utcnist3.colorado.edu
+  - DOMAIN,ntp0.ntp-servers.net
+  - DOMAIN,ntp1.ntp-servers.net
+  - DOMAIN,ntp2.ntp-servers.net
+  - DOMAIN,ntp3.ntp-servers.net
+  - DOMAIN,ntp4.ntp-servers.net
+  - DOMAIN,ntp5.ntp-servers.net
+  - DOMAIN,ntp6.ntp-servers.net
+  - DOMAIN,ntp7.ntp-servers.net
+  - DOMAIN,ntp.time.nl
+  - DOMAIN,ntp1.time.nl
+  - DOMAIN,ntp2.time.nl
+  - DOMAIN,ntppool1.time.nl
+  - DOMAIN,ntppool2.time.nl
+  - DOMAIN-SUFFIX,ntp.se
+  - DOMAIN-SUFFIX,clock.isc.org
+  - DOMAIN-SUFFIX,ntp.fiord.ru
+  - DOMAIN-SUFFIX,ntp.nat.ms
+  - DOMAIN-SUFFIX,ntp.nic.cz
+  - DOMAIN-SUFFIX,ntp.ripe.net
+  - DOMAIN-SUFFIX,ntp.ufe.cz
+  - DOMAIN-SUFFIX,pool.ntp.org
+  - DOMAIN-SUFFIX,time.nrc.ca
+  - DOMAIN-SUFFIX,ntp.nict.jp
+  - DOMAIN-SUFFIX,ntp2.wakwak.com
+  - DOMAIN-SUFFIX,ntp1.wakwak.com
+  - DOMAIN-SUFFIX,ntp.tut.ac.jp
+  - DOMAIN-SUFFIX,ntp0.ring.gr.jp
+  - DOMAIN-SUFFIX,ntp1.tohoku.ac.jp
+  - DOMAIN-SUFFIX,ntp.tohoku.ac.jp
+  - DOMAIN-SUFFIX,ats1.e-timing.ne.jp
+  - DOMAIN-SUFFIX,ntp1.ring.gr.jp
+  - DOMAIN-SUFFIX,ntp2.ring.gr.jp
+  - DOMAIN-SUFFIX,ntp2.tohoku.ac.jp
+  - DOMAIN-SUFFIX,ntp-tk02.ocn.ad.jp
+  - DOMAIN-SUFFIX,ntp-os01.ocn.ad.jp
+  - DOMAIN-SUFFIX,ntp1.plala.or.jp
+  - DOMAIN-SUFFIX,ntp2.plala.or.jp
+  - DOMAIN-SUFFIX,ntp.ring.gr.jp
+  - DOMAIN-SUFFIX,ntp-tk01.ocn.ad.jp
+  - DOMAIN-SUFFIX,ntp3.v6.mfeed.ad.jp
+  - DOMAIN-SUFFIX,s2csntp.miz.nao.ac.jp
+  - DOMAIN-SUFFIX,ntp.t.ring.gr.jp
+  - DOMAIN-SUFFIX,ntp.dnsbalance.ring.gr.jp
+  - DOMAIN-SUFFIX,ntp.nc.u-tokyo.ac.jp
+  - DOMAIN-SUFFIX,ntp2.v6.mfeed.ad.jp
+  - DOMAIN-SUFFIX,ntp1.v6.mfeed.ad.jp
+  - DOMAIN-SUFFIX,ntp3.jst.mfeed.ad.jp
+  - DOMAIN-SUFFIX,ntp2.jst.mfeed.ad.jp
+  - DOMAIN-SUFFIX,ntp1.jst.mfeed.ad.jp
+  - DOMAIN-SUFFIX,ntp.jst.mfeed.ad.jp
+  - DOMAIN,ntp.aliyun.com
+  - DOMAIN,ntp1.aliyun.com
+  - DOMAIN,ntp2.aliyun.com
+  - DOMAIN,ntp3.aliyun.com
+  - DOMAIN,ntp4.aliyun.com
+  - DOMAIN,ntp5.aliyun.com
+  - DOMAIN,ntp6.aliyun.com
+  - DOMAIN,ntp7.aliyun.com
+  - DOMAIN,time.amazonaws.cn
+  - DOMAIN,time.izatcloud.net
+  - DOMAIN,time.xtracloud.net
+  - DOMAIN,izattime.qcomgeo2.com
+  - DOMAIN,xtratime.qcomgeo2.com
+  - DOMAIN,ntp.tencent.com
+  - DOMAIN,ntp1.tencent.com
+  - DOMAIN,ntp2.tencent.com
+  - DOMAIN,ntp3.tencent.com
+  - DOMAIN,ntp4.tencent.com
+  - DOMAIN,ntp5.tencent.com
+  - DOMAIN-SUFFIX,cn.pool.ntp.org
+  - DOMAIN-SUFFIX,ntp.neu.edu.cn
+  - DOMAIN-SUFFIX,ntp.ntsc.ac.cn
+  - DOMAIN-SUFFIX,ntp.org.cn
