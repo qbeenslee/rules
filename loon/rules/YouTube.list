@@ -1,5 +1,5 @@
 # https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/StreamingMedia/Video/YouTube.list
-
+# https://raw.githubusercontent.com/Moli-X/Tool/X/Loon/Rules/YouTube.list
 
 # > YouTube
 # USER-AGENT,com.google.ios.youtube*
@@ -16,5 +16,6 @@ DOMAIN-SUFFIX,yt.be
 DOMAIN-SUFFIX,ytimg.com
 DOMAIN,youtubei.googleapis.com
 DOMAIN,yt3.ggpht.com
+DOMAIN-KEYWORD,youtube
 
 # DOMAIN-SUFFIX,googlevideo.com
