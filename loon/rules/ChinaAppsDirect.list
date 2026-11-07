@@ -1,0 +1,368 @@
+# ==============================================================================
+#  国产软件全量直连 · Loon 进程规则集（macOS）
+# ==============================================================================
+#  目标 : 让本机国产软件的全部连接直连（DIRECT），不经过代理节点
+#  形态 : 纯规则集，**不含策略** —— 策略由引用处统一指定，整个文件可直接对外复用
+#         远程引用：https://.../ChinaAppsDirect.list, policy = DIRECT, tag = 国产直连
+#         想临时改走节点或策略组，只改引用那一行，本文件一个字都不用动
+#  机制 : Loon 的 PROCESS-NAME 进程规则，按「发起请求的可执行文件」匹配，
+#         与目标域名/地区无关 —— 所以国产 App 连境外 CDN 时同样命中
+#  要求 : Loon for macOS >= 0.5.0 (build 1009)
+#         iOS / tvOS 会忽略本文件里的所有进程规则（进程规则仅 macOS 生效）
+#  文档 : https://nsloon.app/docs/Rule/process_rule
+#  日期 : 2026-11-07
+# ==============================================================================
+#
+#  【语法速查】每条规则只有「类型,表达式」两段，第三段（策略）留给引用处
+#    按名称   PROCESS-NAME,WeChat                          不区分大小写，支持 * ? [abc]
+#    按目录   PROCESS-NAME,/Applications/WeChat.app/       以 / 开头且以 / 结尾，区分大小写
+#    按路径   PROCESS-NAME,/Applications/WeChat.app/Contents/MacOS/WeChat   区分大小写
+#    表达式含英文逗号时必须用双引号包裹（本文件暂无此情况）
+#    注释只写整行 —— 行尾注释会把后续内容并进表达式字段
+#
+#  【注意】当远程规则用：策略写在引用行上（policy = DIRECT），本文件不要写。
+#    直接粘进本地 [Rule] 不行 —— 本地规则缺策略会被判为无效，
+#    需先补策略，README「方式二」给了一行命令。
+#
+#  【一个坑】千万不要写 PROCESS-NAME,Electron（再配上直连策略）
+#    Electron 系应用的进程名统一叫 Electron（小程序容器、VS Code、Obsidian 都一样），
+#    按名称匹配会连带直连所有 Electron 应用。本文件对这类 App 一律用「目录前缀」规则。
+#
+#  【匹配顺序】Loon 3.0.3+ 先匹配域名规则 → 再解析 IP 匹配 IP 规则 → 其他规则（含进程规则）
+#    若订阅/插件里已有把 qq.com、weixin.qq.com 等指向代理的域名规则，
+#    进程规则可能还没轮到就被抢先命中，详见 README「排错」一节。
+
+
+# ==============================================================================
+#  A. 本机已安装 · 按应用目录匹配
+#     /Applications/<App>.app/ 前缀会覆盖该 App 内主进程、Electron Helper、
+#     小程序容器（如 WeChatAppEx）等全部可执行文件，无需逐个知道进程名。
+#     ⚠ 本段由 gen_rules.sh 自动生成，请勿手改；新增软件后重跑脚本即可。
+# >>> AUTO-GENERATED BEGIN
+# 共 51 个国产 App（本段不含策略，策略由引用处指定）：扫描 /Applications / /Applications/Utilities / ~/Applications
+PROCESS-NAME,/Applications/AegisClip.app/
+PROCESS-NAME,/Applications/Alibaba Cloud Client.app/
+PROCESS-NAME,/Applications/AndroMeld.app/
+PROCESS-NAME,/Applications/AYA.app/
+PROCESS-NAME,/Applications/BaiduNetdisk_mac.app/
+PROCESS-NAME,/Applications/CodeBuddy.app/
+PROCESS-NAME,/Applications/CodeBuddy CN.app/
+PROCESS-NAME,/Applications/DeepSeek Harness.app/
+PROCESS-NAME,/Applications/Easydict.app/
+PROCESS-NAME,/Applications/EasyTshark.app/
+PROCESS-NAME,/Applications/ESFileExplorerMac.app/
+PROCESS-NAME,/Applications/FinalShell.app/
+PROCESS-NAME,/Applications/FindDiskKiller.app/
+PROCESS-NAME,/Applications/HexHub.app/
+PROCESS-NAME,/Applications/Immersive Translate.app/
+PROCESS-NAME,/Applications/Insta360 Studio.app/
+PROCESS-NAME,/Applications/Lookin.app/
+PROCESS-NAME,/Applications/lx-music-desktop.app/
+PROCESS-NAME,/Applications/MacZip.app/
+PROCESS-NAME,/Applications/MinerU.app/
+PROCESS-NAME,/Applications/Motrix.app/
+PROCESS-NAME,/Applications/MWeb Pro.app/
+PROCESS-NAME,/Applications/OtterPix.app/
+PROCESS-NAME,/Applications/PicGo.app/
+PROCESS-NAME,/Applications/PicSharp.app/
+PROCESS-NAME,/Applications/Picview.app/
+PROCESS-NAME,/Applications/PixPin.app/
+PROCESS-NAME,/Applications/ProxyPin.app/
+PROCESS-NAME,/Applications/Pure Writer 2.app/
+PROCESS-NAME,/Applications/qianqianplayer.app/
+PROCESS-NAME,/Applications/Qianwen.app/
+PROCESS-NAME,/Applications/Qoder CN.app/
+PROCESS-NAME,/Applications/Qoder CN IDE.app/
+PROCESS-NAME,/Applications/QQ.app/
+PROCESS-NAME,/Applications/QtScrcpy.app/
+PROCESS-NAME,/Applications/QuarkCloudDrive.app/
+PROCESS-NAME,/Applications/Readest.app/
+PROCESS-NAME,/Applications/rednote.app/
+PROCESS-NAME,/Applications/Reeden.app/
+PROCESS-NAME,/Applications/Reqable.app/
+PROCESS-NAME,/Applications/Snipaste.app/
+PROCESS-NAME,/Applications/Stay.app/
+PROCESS-NAME,/Applications/SwitchHosts.app/
+PROCESS-NAME,/Applications/Thunder.app/
+PROCESS-NAME,/Applications/VideoFusion-macOS.app/
+PROCESS-NAME,/Applications/WeChat.app/
+PROCESS-NAME,/Applications/Whistle.app/
+PROCESS-NAME,/Applications/WorkBuddy.app/
+PROCESS-NAME,/Applications/嘉立创EDA(专业版).app/
+PROCESS-NAME,/Applications/闪电说.app/
+
+# ⚠ 以下为出海业务，默认注释：服务端在境外，直连通常不可用
+# PROCESS-NAME,/Applications/CapCut.app/
+# <<< AUTO-GENERATED END
+
+
+# ==============================================================================
+#  B. 本机已安装 · 按进程名匹配（兜底）
+#     与 A 段互补：App 被挪出 /Applications、或从下载目录直接运行时仍然生效
+# ==============================================================================
+
+# ---- 腾讯 ----
+# 微信
+PROCESS-NAME,WeChat
+# QQ
+PROCESS-NAME,QQ
+# WorkBuddy
+PROCESS-NAME,WorkBuddy
+# CodeBuddy
+PROCESS-NAME,CodeBuddy
+# Lookin（iOS 调试工具）
+PROCESS-NAME,Lookin
+
+# ---- 阿里 ----
+# 通义千问
+PROCESS-NAME,Qianwen
+# Qoder CN / Qoder CN IDE（两者进程名相同）
+PROCESS-NAME,Qoder CN
+# 阿里云客户端
+PROCESS-NAME,Alibaba Cloud Client
+# 夸克网盘
+PROCESS-NAME,QuarkCloudDrive
+
+# ---- 字节 ----
+# 剪映专业版
+PROCESS-NAME,VideoFusion-macOS
+
+# ---- 百度 / 迅雷 ----
+# 百度网盘
+PROCESS-NAME,BaiduNetdisk_mac
+# 迅雷
+PROCESS-NAME,Thunder
+
+# ---- AI / 开发工具 ----
+# DeepSeek
+PROCESS-NAME,DeepSeek Harness
+# Cherry Studio
+PROCESS-NAME,Cherry Studio
+# MinerU
+PROCESS-NAME,MinerU
+# 沉浸式翻译
+PROCESS-NAME,Immersive Translate
+# Easydict
+PROCESS-NAME,Easydict
+# MWeb Pro
+PROCESS-NAME,MWeb Pro
+# HexHub
+PROCESS-NAME,HexHub
+# Reqable（抓包）
+PROCESS-NAME,Reqable
+# ProxyPin（抓包）
+PROCESS-NAME,ProxyPin
+# Whistle（抓包）
+PROCESS-NAME,Whistle
+# EasyTshark
+PROCESS-NAME,EasyTshark
+# FinalShell 的真实进程名是 st（太通用，不能按名称匹配），由 A 段目录规则覆盖
+
+# ---- 效率 / 图形 / 音视频 ----
+# AegisClip（剪贴板）
+PROCESS-NAME,AegisClip
+# Snipaste
+PROCESS-NAME,Snipaste
+# PixPin
+PROCESS-NAME,PixPin
+# PicGo
+PROCESS-NAME,PicGo
+# PicSharp
+PROCESS-NAME,PicSharp
+# Picview
+PROCESS-NAME,Picview
+# MacZip
+PROCESS-NAME,MacZip
+# OtterPix
+PROCESS-NAME,OtterPix
+# AYA
+PROCESS-NAME,AYA
+# Stay（Safari 扩展管理）
+PROCESS-NAME,Stay
+# SwitchHosts
+PROCESS-NAME,switchhosts
+# FindDiskKiller
+PROCESS-NAME,FindDiskKiller
+# Motrix
+PROCESS-NAME,Motrix
+# QtScrcpy
+PROCESS-NAME,QtScrcpy
+# 洛雪音乐助手
+PROCESS-NAME,lx-music-desktop
+# 千千音乐
+PROCESS-NAME,qianqianplayer
+# 闪电说（语音输入）
+PROCESS-NAME,shandianshuo
+# Readest
+PROCESS-NAME,readest
+# Reeden
+PROCESS-NAME,Reeden
+# 纯纯写作
+PROCESS-NAME,Pure Writer 2
+# ES 文件浏览器
+PROCESS-NAME,ESFileExplorerMac
+# AndroMeld
+PROCESS-NAME,AndroMeld
+# 嘉立创 EDA 专业版
+PROCESS-NAME,LCEDA-Pro
+
+
+# ==============================================================================
+#  C. 未安装但常用 · 按进程名匹配
+#     换机、新装软件后无需改本文件即自动生效。
+#     进程名取自各 App 的 CFBundleExecutable，个别版本会变，故对不确定者用通配。
+# ==============================================================================
+
+# ---- IM / 协作 ----
+# 钉钉
+PROCESS-NAME,DingTalk
+# 飞书（国内版）
+PROCESS-NAME,Feishu
+# 企业微信（新版进程名 WeCom）
+PROCESS-NAME,*WeCom*
+# 企业微信（旧版进程名 WeWork）
+PROCESS-NAME,*WeWork*
+# 腾讯会议
+PROCESS-NAME,*wemeet*
+# 腾讯会议（备用进程名）
+PROCESS-NAME,*TencentMeeting*
+# 华为 WeLink
+PROCESS-NAME,*WeLink*
+# 阿里旺旺
+PROCESS-NAME,AliWangwang
+# 千牛
+PROCESS-NAME,AliWorkbench
+# Foxmail
+PROCESS-NAME,Foxmail
+# 网易邮箱大师
+PROCESS-NAME,NetEaseMail
+
+# ---- 音视频 / 内容 ----
+# 网易云音乐
+PROCESS-NAME,NeteaseMusic
+# QQ 音乐
+PROCESS-NAME,QQMusic
+# 酷狗音乐
+PROCESS-NAME,KuGou
+# 酷我音乐
+PROCESS-NAME,KuwoMusic
+# 喜马拉雅
+PROCESS-NAME,Ximalaya
+# 爱奇艺
+PROCESS-NAME,iQIYI
+# 优酷
+PROCESS-NAME,Youku
+# 腾讯视频
+PROCESS-NAME,TencentVideo
+# 芒果 TV
+PROCESS-NAME,MGTV
+# 哔哩哔哩
+PROCESS-NAME,bilibili
+# 抖音
+PROCESS-NAME,Douyin
+# 虎牙直播
+PROCESS-NAME,Huya
+# 斗鱼
+PROCESS-NAME,Douyu
+# YY
+PROCESS-NAME,YY
+# 微信读书
+PROCESS-NAME,WeRead
+
+# ---- 办公 / 工具 ----
+# WPS Office
+PROCESS-NAME,wpsoffice
+# 语雀
+PROCESS-NAME,Yuque
+# 印象笔记
+PROCESS-NAME,*yinxiang*
+# 有道词典
+PROCESS-NAME,YoudaoDict
+# 欧路词典
+PROCESS-NAME,Eudic
+# 滴答清单
+PROCESS-NAME,TickTick
+# XMind
+PROCESS-NAME,XMind
+# 亿图图示
+PROCESS-NAME,EdrawMax
+# 万兴喵影
+PROCESS-NAME,Filmora
+# 万兴 PDF
+PROCESS-NAME,PDFelement
+# 腾讯柠檬清理
+PROCESS-NAME,Lemon
+# 好压
+PROCESS-NAME,HaoZip
+# WeGame
+PROCESS-NAME,WeGame
+
+# ---- 网盘 / 远程 ----
+# 阿里云盘
+PROCESS-NAME,aDrive
+# 坚果云
+PROCESS-NAME,Nutstore
+# 腾讯微云
+PROCESS-NAME,Weiyun
+# 向日葵
+PROCESS-NAME,SunloginClient
+# ToDesk
+PROCESS-NAME,ToDesk
+
+# ---- 浏览器 ----
+# QQ 浏览器
+PROCESS-NAME,QQBrowser
+# 360 浏览器
+PROCESS-NAME,360Browser
+
+# ---- AI ----
+# 豆包
+PROCESS-NAME,Doubao
+# Kimi
+PROCESS-NAME,Kimi
+# 腾讯元宝
+PROCESS-NAME,Yuanbao
+
+
+# ==============================================================================
+#  D. 输入法（系统级路径，最常被漏掉：词库同步、云联想也在联网）
+# ==============================================================================
+# 豆包输入法（本机已装，路径已核实）
+PROCESS-NAME,/Library/Input Methods/DoubaoIme.app/
+# 鼠须管 RIME（本机已装，开源中文输入法）
+PROCESS-NAME,/Library/Input Methods/Squirrel.app/
+# 搜狗输入法（目录名固定，进程名兜底以防版本差异）
+PROCESS-NAME,/Library/Input Methods/SogouInput.app/
+PROCESS-NAME,*SogouInput*
+# 百度输入法
+PROCESS-NAME,*BaiduInput*
+# 讯飞输入法
+PROCESS-NAME,*iFlyInput*
+# 微信输入法
+PROCESS-NAME,*WeChatIme*
+PROCESS-NAME,*WeType*
+# 若输入法只装在当前用户下，路径要写全（Loon 不展开 ~）：
+# PROCESS-NAME,/Users/你的用户名/Library/Input Methods/SogouInput.app/
+
+
+# ==============================================================================
+#  E. 默认关闭 · 需要按需开启的项
+# ==============================================================================
+# E1. 出海业务：服务端在境外，直连通常连不上或极慢；需要代理时保持注释
+# PROCESS-NAME,/Applications/CapCut.app/
+# PROCESS-NAME,CapCut
+# PROCESS-NAME,Lark
+#
+# E2. 抓包/调试工具（Reqable、ProxyPin、Whistle）已按「国产全直连」纳入 B 段。
+#     副作用：被它们捕获的请求由它们自己发起，因此也走直连、不再经过代理节点。
+#     需要「抓包 + 请求仍按域名分流」时，注释掉 B 段对应三行即可。
+#
+# E3. 代理客户端本身绝不加入（Loon / ClashX Meta / ClashMac / Surge / sing-box …），
+#     否则会形成回环，代理直接失效。
+
+
+# ==============================================================================
+#  维护：装了新的国产软件后，在本目录执行
+#         ./gen_rules.sh
+#        A 段会按当前 /Applications 重新生成，其余各段不受影响。
+# ==============================================================================
