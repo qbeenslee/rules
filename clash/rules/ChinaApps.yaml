@@ -1,0 +1,565 @@
+# ==============================================================================
+#  国产软件全量直连 · Clash / mihomo 规则集（macOS）
+# ==============================================================================
+#  形态 : 纯规则集（rule-provider，behavior: classical），**不含策略**
+#         策略写在引用它的那条 rules 上：RULE-SET,china-apps-direct,DIRECT
+#         换策略只改引用行，本文件零改动，可对外复用
+#  内核 : 必须是 Meta / mihomo 系（ClashX Meta、Clash Verge Rev、Mihomo Party…）
+#         原版 Clash Premium 不支持进程规则
+#  要求 : find-process-mode 建议设为 always（见 README）；进程匹配需内核具备
+#         读取进程信息的权限，macOS 上一般指 TUN 模式 + 提权
+#  文档 : https://wiki.metacubex.one/config/rules/
+#  日期 : 2026-11-07
+# ==============================================================================
+#
+#  【语法速查】每条只有「类型,表达式」两段，第三段策略留给 RULE-SET 那行
+#    PROCESS-NAME,WeChat                      精确进程名（区分大小写，需与可执行文件一致）
+#    PROCESS-NAME-WILDCARD,*WeCom*            进程名通配，仅支持 * 和 ?（可跨字符）
+#    PROCESS-NAME-REGEX,(?i)telegram          进程名正则（Go/RE2，默认区分大小写）
+#    PROCESS-PATH,/usr/bin/curl               完整路径精确匹配
+#    PROCESS-PATH-WILDCARD,/Applications/*/*  路径通配，仅支持 * 和 ?
+#    PROCESS-PATH-REGEX,^/Applications/WeChat\.app/   路径正则（本文件主力）
+#
+#  【与 Loon 版的对应】Loon 的「目录前缀」规则在 Clash 没有等价类型，
+#    统一改用 PROCESS-PATH-REGEX，锚定 ^/Applications/<App>.app/ 即可覆盖
+#    Helper、Electron 子进程、小程序容器等全部可执行文件。
+#
+#  【一个坑】不要写 PROCESS-NAME,Electron
+#    Electron 应用的进程名统一叫 Electron（VS Code、Obsidian 亦然），
+#    按名称匹配会连带直连所有 Electron 应用，这类 App 一律用路径正则。
+#
+#  【顺序】Clash 的规则是严格自上而下匹配，没有 Loon 的「域名优先」例外，
+#    所以本规则集只要排在广告拦截之后、所有代理类规则集之前即可，详见 README。
+
+payload:
+  # ==========================================================================
+  #  A. 本机已安装 · 进程路径正则
+  #     ^/Applications/<App>.app/ 覆盖该 App 内主进程、Helper、
+  #     Electron 子进程、小程序容器（WeChatAppEx 之类），无需知道进程名。
+  #     ⚠ 本段由 gen_rules.sh 自动生成，请勿手改；新增软件后重跑脚本即可。
+  # >>> AUTO-GENERATED BEGIN
+  # 共 34 个国产 App（本段不含策略，策略由引用处指定）：扫描 /Applications / /Applications/Utilities / ~/Applications
+  - 'PROCESS-PATH-REGEX,^/Applications/AYA\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/AegisClip\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/Alibaba Cloud Client\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/AndroMeld\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/BaiduNetdisk_mac\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/CodeBuddy CN\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/CodeBuddy\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/DeepSeek Harness\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/ESFileExplorerMac\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/FindDiskKiller\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/Insta360 Studio\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/Lookin\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/MacZip\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/OtterPix\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/PicSharp\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/Picview\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/PixPin\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/QQ\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/Qianwen\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/Qoder CN IDE\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/Qoder CN\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/QtScrcpy\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/QuarkCloudDrive\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/Snipaste\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/Stay\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/SwitchHosts\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/Thunder\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/VideoFusion-macOS\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/WeChat\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/WorkBuddy\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/qianqianplayer\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/rednote\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/嘉立创EDA\(专业版\)\.app/'
+  - 'PROCESS-PATH-REGEX,^/Applications/闪电说\.app/'
+
+  # ⚠ 以下为出海业务，默认注释：服务端在境外，直连通常不可用
+  # PROCESS-PATH-REGEX,^/Applications/CapCut\.app/
+  # <<< AUTO-GENERATED END
+
+  # ==========================================================================
+  #  A2. 助手进程 · 按进程名（自动生成）
+  #     很多国产 App 把真正联网的部分拆成独立助手进程，名字和主进程毫无关系：
+  #     百度网盘下载走 baidunetdiskhost、微信小程序走 WeChatAppEx、迅雷走 XLEmbeddedPlayer……
+  #     它们虽在 App 包内，但内核有时取不到其可执行路径，
+  #     此时路径正则不会命中，只有按名称匹配才救得回来。
+  #     收录条件：位于国产 App 包内 + 该名称在本机所有非国产 App 中都不存在（不会误伤别人）。
+  #     ⚠ 本段由 gen_rules.sh 生成，勿手改。
+  # >>> HELPERS BEGIN
+  # 共 101 个助手进程（名称在全机唯一，可安全按名称匹配）
+
+  # Alibaba Cloud Client
+  - 'PROCESS-NAME,Alibaba Cloud Client Helper'
+  - 'PROCESS-NAME,Alibaba Cloud Client Helper (GPU)'
+  - 'PROCESS-NAME,Alibaba Cloud Client Helper (Plugin)'
+  - 'PROCESS-NAME,Alibaba Cloud Client Helper (Renderer)'
+
+  # AndroMeld
+  - 'PROCESS-NAME,AndDriveFileProvider'
+  - 'PROCESS-NAME,AndDriveShare'
+  - 'PROCESS-NAME,AndDriveThumbnail'
+  - 'PROCESS-NAME,andromeld-mcp-server'
+  - 'PROCESS-NAME,AndroMeldBackgroundAssetDownloader'
+  - 'PROCESS-NAME,AndroMeldPreview'
+  - 'PROCESS-NAME,com.catchingnow.andfiles.cameraextension'
+  - 'PROCESS-NAME,Fusion Mode - AndroMeld'
+  - 'PROCESS-NAME,Screen Mirroring - AndroMeld'
+
+  # AYA
+  - 'PROCESS-NAME,AYA Helper'
+  - 'PROCESS-NAME,AYA Helper (GPU)'
+  - 'PROCESS-NAME,AYA Helper (Plugin)'
+  - 'PROCESS-NAME,AYA Helper (Renderer)'
+
+  # BaiduNetdisk_mac
+  - 'PROCESS-NAME,BaiduNetdisk_mac Helper'
+  - 'PROCESS-NAME,BaiduNetdisk_mac Helper (GPU)'
+  - 'PROCESS-NAME,BaiduNetdisk_mac Helper (Plugin)'
+  - 'PROCESS-NAME,BaiduNetdisk_mac Helper (Renderer)'
+  - 'PROCESS-NAME,baidunetdiskhost'
+  - 'PROCESS-NAME,baiduNetdiskSync'
+  - 'PROCESS-NAME,EntBaiduNetdiskImageViewer'
+  - 'PROCESS-NAME,netdisk_service'
+
+  # CodeBuddy
+  - 'PROCESS-NAME,CodeBuddy Helper'
+  - 'PROCESS-NAME,CodeBuddy Helper (GPU)'
+  - 'PROCESS-NAME,CodeBuddy Helper (Plugin)'
+  - 'PROCESS-NAME,CodeBuddy Helper (Renderer)'
+
+  # CodeBuddy CN
+  - 'PROCESS-NAME,CodeBuddy CN Helper'
+  - 'PROCESS-NAME,CodeBuddy CN Helper (GPU)'
+  - 'PROCESS-NAME,CodeBuddy CN Helper (Plugin)'
+  - 'PROCESS-NAME,CodeBuddy CN Helper (Renderer)'
+
+  # DeepSeek Harness
+  - 'PROCESS-NAME,DeepSeek Harness Helper'
+  - 'PROCESS-NAME,DeepSeek Harness Helper (GPU)'
+  - 'PROCESS-NAME,DeepSeek Harness Helper (Plugin)'
+  - 'PROCESS-NAME,DeepSeek Harness Helper (Renderer)'
+
+  # FindDiskKiller
+  - 'PROCESS-NAME,com.jianyintang.FindDiskKiller.TraceHelper'
+  - 'PROCESS-NAME,FindDiskKillerClaudeCleanupHelper'
+
+  # Insta360 Studio
+  - 'PROCESS-NAME,Studio Browser Service'
+  - 'PROCESS-NAME,Studio Browser Service (GPU)'
+  - 'PROCESS-NAME,Studio Browser Service (Plugin)'
+  - 'PROCESS-NAME,Studio Browser Service (Renderer)'
+  - 'PROCESS-NAME,studio-exporter-service'
+  - 'PROCESS-NAME,studio-thumbnail-service'
+  - 'PROCESS-NAME,studio_utility'
+
+  # MacZip
+  - 'PROCESS-NAME,MacZipQL'
+
+  # PicSharp
+  - 'PROCESS-NAME,picsharp-cli'
+  - 'PROCESS-NAME,picsharp-sidecar'
+
+  # PixPin
+  - 'PROCESS-NAME,PixPinAuxiliary'
+
+  # Qoder CN / Qoder CN IDE
+  - 'PROCESS-NAME,Qoder CN Helper'
+  - 'PROCESS-NAME,Qoder CN Helper (GPU)'
+  - 'PROCESS-NAME,Qoder CN Helper (Plugin)'
+  - 'PROCESS-NAME,Qoder CN Helper (Renderer)'
+
+  # Qoder CN
+  - 'PROCESS-NAME,QoderDockTilePlugin'
+
+  # QQ
+  - 'PROCESS-NAME,QQ Helper'
+  - 'PROCESS-NAME,QQ Helper (GPU)'
+  - 'PROCESS-NAME,QQ Helper (Plugin)'
+  - 'PROCESS-NAME,QQ Helper (Renderer)'
+  - 'PROCESS-NAME,QQ Login Helper'
+  - 'PROCESS-NAME,QQEXDOC'
+  - 'PROCESS-NAME,QQEXGuild'
+  - 'PROCESS-NAME,QQEXMiniProgram'
+
+  # Stay
+  - 'PROCESS-NAME,Stay Content Basic Mac'
+  - 'PROCESS-NAME,Stay Content Custom Mac'
+  - 'PROCESS-NAME,Stay Content Privacy Mac'
+  - 'PROCESS-NAME,Stay Content Region Mac'
+  - 'PROCESS-NAME,Stay Content Subscribe Mac'
+  - 'PROCESS-NAME,Stay Content Tag Mac'
+  - 'PROCESS-NAME,Stay-Mac Extension'
+
+  # SwitchHosts
+  - 'PROCESS-NAME,swh_helper'
+
+  # Thunder
+  - 'PROCESS-NAME,com.xunlei.Thunder.HelperTool'
+  - 'PROCESS-NAME,diagnostic'
+  - 'PROCESS-NAME,Thunder Extension'
+  - 'PROCESS-NAME,ThunderHelper'
+  - 'PROCESS-NAME,thunderword'
+  - 'PROCESS-NAME,viptips'
+  - 'PROCESS-NAME,xlbrowser'
+  - 'PROCESS-NAME,XLEmbeddedPlayer'
+  - 'PROCESS-NAME,xlplayer'
+
+  # VideoFusion-macOS
+  - 'PROCESS-NAME,VECrashHandler'
+  - 'PROCESS-NAME,VEHelper'
+  - 'PROCESS-NAME,VideoFusion-macOS Helper'
+  - 'PROCESS-NAME,VideoFusion-macOS Helper (GPU)'
+  - 'PROCESS-NAME,VideoFusion-macOS Helper (Plugin)'
+  - 'PROCESS-NAME,VideoFusion-macOS Helper (Renderer)'
+  - 'PROCESS-NAME,VideoFusion-macOSTray'
+  - 'PROCESS-NAME,VideoFusion-macOSTrayHelper'
+
+  # WeChat
+  - 'PROCESS-NAME,WeChatAppEx'
+  - 'PROCESS-NAME,WeChatFileProviderExtension'
+  - 'PROCESS-NAME,WeChatHelper'
+  - 'PROCESS-NAME,WeChatMacShare'
+  - 'PROCESS-NAME,XPlayer'
+
+  # WorkBuddy
+  - 'PROCESS-NAME,WechatShare'
+  - 'PROCESS-NAME,WorkBuddy Helper'
+  - 'PROCESS-NAME,WorkBuddy Helper (GPU)'
+  - 'PROCESS-NAME,WorkBuddy Helper (Plugin)'
+  - 'PROCESS-NAME,WorkBuddy Helper (Renderer)'
+  - 'PROCESS-NAME,WorkBuddy 文件浏览器'
+  - 'PROCESS-NAME,WorkBuddyLegacyAutoLaunchCleaner'
+  - 'PROCESS-NAME,WorkBuddyRepair'
+  # <<< HELPERS END
+
+  # ==========================================================================
+  #  A3. 厂商关键词 · 按名称包含匹配（自动生成）
+  #     最后一层保险：不枚举具体进程，只要进程名里带上厂商标识就算国产。
+  #     好处是没见过的助手进程也能兜住 —— 百度网盘将来改名、腾讯新出个子进程，
+  #     只要名字里还有 baidu / tencent / qq 这些字，就自动命中。
+  #     关键词都是挑过的品牌词，不会撞上无关进程；`^` 开头表示前缀匹配，其余为包含匹配。
+  #     ⚠ 本段由 gen_rules.sh 生成，勿手改。
+  # >>> VENDOR BEGIN
+  # 共 71 个厂商标识（包含匹配，兜住没见过的助手进程）
+
+  # 百度
+  - 'PROCESS-NAME-REGEX,(?i)baidu'
+
+  # 腾讯
+  - 'PROCESS-NAME-REGEX,(?i)tencent'
+  - 'PROCESS-NAME-REGEX,(?i)wechat'
+  - 'PROCESS-NAME-REGEX,(?i)weixin'
+  - 'PROCESS-NAME-REGEX,(?i)^qq'
+  - 'PROCESS-NAME-REGEX,(?i)foxmail'
+  - 'PROCESS-NAME-REGEX,(?i)weiyun'
+  - 'PROCESS-NAME-REGEX,(?i)wemeet'
+
+  # 阿里
+  - 'PROCESS-NAME-REGEX,(?i)alibaba'
+  - 'PROCESS-NAME-REGEX,(?i)aliyun'
+  - 'PROCESS-NAME-REGEX,(?i)taobao'
+  - 'PROCESS-NAME-REGEX,(?i)tmall'
+  - 'PROCESS-NAME-REGEX,(?i)quark'
+  - 'PROCESS-NAME-REGEX,(?i)dingtalk'
+  - 'PROCESS-NAME-REGEX,(?i)yuque'
+  - 'PROCESS-NAME-REGEX,(?i)adrive'
+
+  # 字节
+  - 'PROCESS-NAME-REGEX,(?i)bytedance'
+  - 'PROCESS-NAME-REGEX,(?i)douyin'
+  - 'PROCESS-NAME-REGEX,(?i)toutiao'
+  - 'PROCESS-NAME-REGEX,(?i)feishu'
+  - 'PROCESS-NAME-REGEX,(?i)xigua'
+
+  # 网易
+  - 'PROCESS-NAME-REGEX,(?i)netease'
+  - 'PROCESS-NAME-REGEX,(?i)youdao'
+
+  # 迅雷
+  - 'PROCESS-NAME-REGEX,(?i)xunlei'
+  - 'PROCESS-NAME-REGEX,(?i)thunder'
+
+  # 哔哩哔哩
+  - 'PROCESS-NAME-REGEX,(?i)bilibili'
+
+  # 快手
+  - 'PROCESS-NAME-REGEX,(?i)kuaishou'
+
+  # 小红书
+  - 'PROCESS-NAME-REGEX,(?i)rednote'
+  - 'PROCESS-NAME-REGEX,(?i)xiaohongshu'
+
+  # 微博
+  - 'PROCESS-NAME-REGEX,(?i)weibo'
+  - 'PROCESS-NAME-REGEX,(?i)sina'
+
+  # 知乎
+  - 'PROCESS-NAME-REGEX,(?i)zhihu'
+
+  # 豆瓣
+  - 'PROCESS-NAME-REGEX,(?i)douban'
+
+  # 京东
+  - 'PROCESS-NAME-REGEX,(?i)jingdong'
+
+  # 美团
+  - 'PROCESS-NAME-REGEX,(?i)meituan'
+  - 'PROCESS-NAME-REGEX,(?i)dianping'
+
+  # 拼多多
+  - 'PROCESS-NAME-REGEX,(?i)pinduoduo'
+
+  # 携程
+  - 'PROCESS-NAME-REGEX,(?i)ctrip'
+
+  # 金山 / WPS
+  - 'PROCESS-NAME-REGEX,(?i)wps'
+  - 'PROCESS-NAME-REGEX,(?i)kingsoft'
+
+  # 搜狗
+  - 'PROCESS-NAME-REGEX,(?i)sogou'
+
+  # 讯飞
+  - 'PROCESS-NAME-REGEX,(?i)iflytek'
+
+  # 华为
+  - 'PROCESS-NAME-REGEX,(?i)huawei'
+
+  # 小米
+  - 'PROCESS-NAME-REGEX,(?i)xiaomi'
+
+  # 爱奇艺
+  - 'PROCESS-NAME-REGEX,(?i)iqiyi'
+
+  # 优酷
+  - 'PROCESS-NAME-REGEX,(?i)youku'
+
+  # 芒果 TV
+  - 'PROCESS-NAME-REGEX,(?i)mgtv'
+
+  # 斗鱼
+  - 'PROCESS-NAME-REGEX,(?i)douyu'
+
+  # 虎牙
+  - 'PROCESS-NAME-REGEX,(?i)huya'
+
+  # 喜马拉雅
+  - 'PROCESS-NAME-REGEX,(?i)ximalaya'
+
+  # 酷狗
+  - 'PROCESS-NAME-REGEX,(?i)kugou'
+
+  # 酷我
+  - 'PROCESS-NAME-REGEX,(?i)kuwo'
+
+  # 咪咕
+  - 'PROCESS-NAME-REGEX,(?i)migu'
+
+  # 360
+  - 'PROCESS-NAME-REGEX,(?i)^360'
+
+  # 向日葵
+  - 'PROCESS-NAME-REGEX,(?i)sunlogin'
+  - 'PROCESS-NAME-REGEX,(?i)oray'
+
+  # ToDesk
+  - 'PROCESS-NAME-REGEX,(?i)todesk'
+
+  # 坚果云
+  - 'PROCESS-NAME-REGEX,(?i)nutstore'
+
+  # 印象笔记
+  - 'PROCESS-NAME-REGEX,(?i)yinxiang'
+
+  # 滴答清单
+  - 'PROCESS-NAME-REGEX,(?i)ticktick'
+
+  # XMind
+  - 'PROCESS-NAME-REGEX,(?i)xmind'
+
+  # 亿图
+  - 'PROCESS-NAME-REGEX,(?i)edraw'
+
+  # 万兴
+  - 'PROCESS-NAME-REGEX,(?i)wondershare'
+  - 'PROCESS-NAME-REGEX,(?i)filmora'
+  - 'PROCESS-NAME-REGEX,(?i)pdfelement'
+
+  # DeepSeek
+  - 'PROCESS-NAME-REGEX,(?i)deepseek'
+
+  # 豆包
+  - 'PROCESS-NAME-REGEX,(?i)doubao'
+
+  # 通义 / Qwen
+  - 'PROCESS-NAME-REGEX,(?i)tongyi'
+  - 'PROCESS-NAME-REGEX,(?i)qwen'
+
+  # Kimi
+  - 'PROCESS-NAME-REGEX,(?i)moonshot'
+  - 'PROCESS-NAME-REGEX,(?i)^kimi'
+  # <<< VENDOR END
+
+  # ==========================================================================
+  #  B. 本机已安装 · 进程名（兜底）
+  #     与 A 段互补：App 被挪出 /Applications、或从下载目录直接运行时仍生效
+  # ==========================================================================
+  #
+  #  ⚠ 刻意不收录的 App（国内开发，但流量本来就要往外走 —— 直连反而用不了）
+  #    PicGo                 图床可指向 S3 / 海外对象存储
+  #    Cherry Studio         多模型客户端，API 常在境外
+  #    Immersive Translate   翻译服务多家在境外
+  #    Easydict              翻译走 Google / Bing 等境外接口
+  #    Reeden、readest       阅读器，书源与同步可能在境外
+  #    FinalShell、Reqable   连任意远端（SSH / 抓包调试）
+  #    ProxyPin、Whistle     抓包调试，捕获的请求需要按域名分流
+  #    EasyTshark            抓包分析
+  #    lx-music-desktop      音源多为境外站点
+  #    MWeb Pro、MWeb        可发布到 WordPress / Medium 等境外博客
+  #    Pure Writer 2         云同步与图床可指向境外服务
+  #    HexHub                SSH / 数据库客户端，连的是任意远端
+  #    MinerU                会从 Hugging Face 等站点下载模型
+  #    Motrix                下载器，源地址可以是任意站点
+  #    Rayburst              需联网拉取服务端资源
+  #  名单在 gen_rules.sh 的 EXCLUDE_NAMES，跑脚本不会把它们混回来。
+
+  # 腾讯
+  - 'PROCESS-NAME,WeChat'
+  - 'PROCESS-NAME,QQ'
+  - 'PROCESS-NAME,WorkBuddy'
+  - 'PROCESS-NAME,CodeBuddy'
+  - 'PROCESS-NAME,Lookin'
+
+  # 阿里
+  - 'PROCESS-NAME,Qianwen'
+  - 'PROCESS-NAME,Qoder CN'
+  - 'PROCESS-NAME,Alibaba Cloud Client'
+  - 'PROCESS-NAME,QuarkCloudDrive'
+
+  # 字节
+  - 'PROCESS-NAME,VideoFusion-macOS'
+
+  # 百度 / 迅雷
+  - 'PROCESS-NAME,BaiduNetdisk_mac'
+  - 'PROCESS-NAME,Thunder'
+
+  # AI / 开发工具
+  - 'PROCESS-NAME,DeepSeek Harness'
+  # 已排除：Cherry Studio、沉浸式翻译、Easydict、MWeb Pro、纯纯写作、HexHub、
+  #        MinerU、Motrix、Reqable、ProxyPin、Whistle、EasyTshark、FinalShell
+  #        Rayburst（完整名单见 B 段开头说明）
+
+  # 效率 / 图形 / 音视频
+  - 'PROCESS-NAME,AegisClip'
+  - 'PROCESS-NAME,Snipaste'
+  - 'PROCESS-NAME,PixPin'
+  - 'PROCESS-NAME,PicSharp'
+  - 'PROCESS-NAME,Picview'
+  - 'PROCESS-NAME,MacZip'
+  - 'PROCESS-NAME,OtterPix'
+  - 'PROCESS-NAME,AYA'
+  - 'PROCESS-NAME,Stay'
+  - 'PROCESS-NAME,switchhosts'
+  - 'PROCESS-NAME,FindDiskKiller'
+  - 'PROCESS-NAME,QtScrcpy'
+  - 'PROCESS-NAME,qianqianplayer'
+  - 'PROCESS-NAME,shandianshuo'
+  - 'PROCESS-NAME,ESFileExplorerMac'
+  - 'PROCESS-NAME,AndroMeld'
+  - 'PROCESS-NAME,LCEDA-Pro'
+
+  # ==========================================================================
+  #  C. 未安装但常用
+  #     换机、新装即生效；进程名取自 CFBundleExecutable，版本间可能不同，
+  #     故对不确定者用 PROCESS-NAME-WILDCARD
+  # ==========================================================================
+
+  # IM / 协作
+  - 'PROCESS-NAME,DingTalk'
+  - 'PROCESS-NAME,Feishu'
+  # 企业微信（新版 WeCom / 旧版 WeWork）
+  - 'PROCESS-NAME-WILDCARD,*WeCom*'
+  - 'PROCESS-NAME-WILDCARD,*WeWork*'
+  # 腾讯会议由 A3 段的关键词覆盖，此处不再重复
+  # 华为 WeLink
+  - 'PROCESS-NAME-WILDCARD,*WeLink*'
+  - 'PROCESS-NAME,AliWangwang'
+  - 'PROCESS-NAME,AliWorkbench'
+  - 'PROCESS-NAME,Foxmail'
+  - 'PROCESS-NAME,NetEaseMail'
+
+  # 音视频 / 内容
+  - 'PROCESS-NAME,NeteaseMusic'
+  - 'PROCESS-NAME,QQMusic'
+  - 'PROCESS-NAME,KuGou'
+  - 'PROCESS-NAME,KuwoMusic'
+  - 'PROCESS-NAME,Ximalaya'
+  - 'PROCESS-NAME,iQIYI'
+  - 'PROCESS-NAME,Youku'
+  - 'PROCESS-NAME,TencentVideo'
+  - 'PROCESS-NAME,MGTV'
+  - 'PROCESS-NAME,bilibili'
+  - 'PROCESS-NAME,Douyin'
+  - 'PROCESS-NAME,Huya'
+  - 'PROCESS-NAME,Douyu'
+  - 'PROCESS-NAME,YY'
+  - 'PROCESS-NAME,WeRead'
+
+  # 办公 / 工具
+  - 'PROCESS-NAME,wpsoffice'
+  - 'PROCESS-NAME,Yuque'
+  # 印象笔记由 A3 段的关键词覆盖，此处不再重复
+  - 'PROCESS-NAME,YoudaoDict'
+  - 'PROCESS-NAME,Eudic'
+  - 'PROCESS-NAME,TickTick'
+  - 'PROCESS-NAME,XMind'
+  - 'PROCESS-NAME,EdrawMax'
+  - 'PROCESS-NAME,Filmora'
+  - 'PROCESS-NAME,PDFelement'
+  - 'PROCESS-NAME,Lemon'
+  - 'PROCESS-NAME,HaoZip'
+  - 'PROCESS-NAME,WeGame'
+
+  # 网盘 / 远程
+  - 'PROCESS-NAME,aDrive'
+  - 'PROCESS-NAME,Nutstore'
+  - 'PROCESS-NAME,Weiyun'
+  - 'PROCESS-NAME,SunloginClient'
+  - 'PROCESS-NAME,ToDesk'
+
+  # 浏览器
+  - 'PROCESS-NAME,QQBrowser'
+  - 'PROCESS-NAME,360Browser'
+
+  # AI
+  - 'PROCESS-NAME,Doubao'
+  - 'PROCESS-NAME,Kimi'
+  - 'PROCESS-NAME,Yuanbao'
+
+  # ==========================================================================
+  #  D. 输入法（系统级路径，最常被漏掉：词库同步、云联想也在联网）
+  # ==========================================================================
+  - 'PROCESS-PATH-REGEX,^/Library/Input Methods/DoubaoIme\.app/'
+  - 'PROCESS-PATH-REGEX,^/Library/Input Methods/Squirrel\.app/'
+  - 'PROCESS-PATH-REGEX,^/Library/Input Methods/SogouInput\.app/'
+  - 'PROCESS-NAME-WILDCARD,*SogouInput*'
+  - 'PROCESS-NAME-WILDCARD,*BaiduInput*'
+  - 'PROCESS-NAME-WILDCARD,*iFlyInput*'
+  - 'PROCESS-NAME-WILDCARD,*WeChatIme*'
+  - 'PROCESS-NAME-WILDCARD,*WeType*'
+
+  # ==========================================================================
+  #  E. 默认关闭 · 需要按需开启
+  # ==========================================================================
+  # E1. 出海业务：服务端在境外，直连通常连不上或极慢；需要代理时保持注释
+  # - 'PROCESS-PATH-REGEX,^/Applications/CapCut\.app/'
+  # - 'PROCESS-NAME,CapCut'
+  # - 'PROCESS-NAME,Lark'
+  #
+  # E2. 抓包/调试工具（Reqable、ProxyPin、Whistle、EasyTshark）已整体排除，
+  #     不再进直连名单 —— 它们捕获的请求由自己发起，若走直连就无法按域名分流。
+  #     确实想让它们直连，手动加一条：- 'PROCESS-NAME,Reqable'
+  #
+  # E3. 代理客户端本身绝不加入（Loon / ClashX Meta / Clash Verge / mihomo / sing-box），
+  #     否则会形成回环，代理直接失效。
